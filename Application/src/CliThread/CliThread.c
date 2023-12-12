@@ -650,6 +650,8 @@ BaseType_t CLI_Servo_changePos(int8_t *pcWriteBuffer, size_t xWriteBufferLen, co
     pcParameter = FreeRTOS_CLIGetParameter(pcCommandString, 1, &xParameterStringLength);
     int parameterValue = atoi(pcParameter);
 
+    configure_tcc();
+
     update_pwm_duty_cycle(parameterValue, 3);
 
     SerialConsoleWriteString("pwm duty cycle is changed!\r\n");

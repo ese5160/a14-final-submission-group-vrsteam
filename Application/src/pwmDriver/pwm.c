@@ -6,9 +6,9 @@
 void configure_tcc(void) {
     struct system_pinmux_config tcc_pinmux_config;
 	system_pinmux_get_config_defaults(&tcc_pinmux_config);
-    tcc_pinmux_config.mux_position = (1 << 2);
+    tcc_pinmux_config.mux_position = MUX_PA24F_TCC1_WO2;
     system_pinmux_pin_set_config(PIN_PA24F_TCC1_WO2, &tcc_pinmux_config);
-    tcc_pinmux_config.mux_position = (1 << 2));
+    tcc_pinmux_config.mux_position = MUX_PA25F_TCC1_WO3;
     system_pinmux_pin_set_config(PIN_PA25F_TCC1_WO3, &tcc_pinmux_config);
 
     tcc_get_config_defaults(&config_tcc, TCC1); // Use TCC0
