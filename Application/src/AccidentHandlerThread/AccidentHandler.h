@@ -8,6 +8,7 @@
 
 
 extern SemaphoreHandle_t xAccidentDetectedSemaphore;
+extern bool handle;
 
 void vAccidentHandlerTask(void *pvParameters);
 bool accidentHappened(int temp, int hum);

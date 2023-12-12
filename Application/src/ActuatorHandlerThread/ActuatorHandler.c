@@ -1,8 +1,8 @@
 #include "ActuatorHandlerThread/ActuatorHandler.h"
 #include "SerialConsole.h"
 #include "pwmDriver/pwm.h"
-
-bool handled = false;
+ 
+extern bool handled;
 
 void vActuatorHandlerTask(void *pvParameters)
 {

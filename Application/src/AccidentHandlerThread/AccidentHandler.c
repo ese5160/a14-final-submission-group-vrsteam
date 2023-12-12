@@ -21,6 +21,9 @@ void vAccidentHandlerTask(void *pvParameters)
         vTaskDelay(500);
 
         global_temp = temp_hum_get_val(GET_TEMP_VAL);
+        if(global_temp > 39 && prev_temp <= 39) handle = true;
+        if(global_temp <= 39 && prev_temp > 39) handle = false;
+        prev_temp = global_temp;
         // SerialConsoleWriteString("Obtained Temperature Value: ");
         // snprintf(bufCli, CLI_MSG_LEN - 1, "%d\r\n", global_temp);
         // SerialConsoleWriteString(bufCli);

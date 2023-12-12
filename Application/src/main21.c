@@ -46,6 +46,9 @@ static TaskHandle_t controlTaskHandle = NULL;  //!< Control task handle
 
 SemaphoreHandle_t xAccidentDetectedSemaphore = NULL;
 
+bool handle = false;
+
+int prev_temp = 0;
 int global_temp = 0;
 int global_hum = 0;
 int global_acc[3] = {0, 0, 0};
