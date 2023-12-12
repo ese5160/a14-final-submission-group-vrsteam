@@ -44,6 +44,8 @@ static TaskHandle_t wifiTaskHandle = NULL;     //!< Wifi task handle
 static TaskHandle_t uiTaskHandle = NULL;       //!< UI task handle
 static TaskHandle_t controlTaskHandle = NULL;  //!< Control task handle
 
+SemaphoreHandle_t xAccidentDetectedSemaphore = NULL;
+
 char bufferPrint[64];  ///< Buffer for daemon task
 
 /**
