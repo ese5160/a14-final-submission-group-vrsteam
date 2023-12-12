@@ -1,6 +1,9 @@
 #include "AccidentHandlerThread/AccidentHandler.h"
 #include "SerialConsole.h"
 
+int counter = 0;
+
+
 void vAccidentHandlerTask(void *pvParameters)
 {
     
