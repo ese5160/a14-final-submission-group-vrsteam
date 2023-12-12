@@ -49,8 +49,8 @@ int temp_hum_get_val(bool temp_or_hum){
 		//packet.data = write_buffer;
         //Read RH first
 		temp_hum_packet.data_length = 2;		
-		temp_hum_write_buffer[0] = 0x5C;
-		temp_hum_write_buffer[1] = 0x24;
+		temp_hum_write_buffer[0] = (temp_or_hum) ? 0x7C : 0x5C;
+		temp_hum_write_buffer[1] = (temp_or_hum) ? 0xA2 : 0x24;
 		/*timeout=0;*/
 		while (i2c_master_write_packet_wait(&i2c_master_instance, &temp_hum_packet) !=
 		STATUS_OK) {
