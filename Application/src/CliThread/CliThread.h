@@ -42,7 +42,6 @@ BaseType_t xCliClearTerminalScreen( char *pcWriteBuffer,size_t xWriteBufferLen,c
 void vCommandConsoleTask( void *pvParameters );
 void CliCharReadySemaphoreGiveFromISR(void);
 
-BaseType_t CLI_GetImuData( int8_t *pcWriteBuffer,size_t xWriteBufferLen,const int8_t *pcCommandString );
 BaseType_t CLI_OTAU( int8_t *pcWriteBuffer,size_t xWriteBufferLen,const int8_t *pcCommandString );
 BaseType_t CLI_NeotrellisSetLed( int8_t *pcWriteBuffer,size_t xWriteBufferLen,const int8_t *pcCommandString );
 BaseType_t CLI_NeotrellProcessButtonBuffer( int8_t *pcWriteBuffer,size_t xWriteBufferLen,const int8_t *pcCommandString );
@@ -55,4 +54,5 @@ BaseType_t CLI_MotorDriver(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const 
 BaseType_t CLI_GPSCheckPosition(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString);
 BaseType_t CLI_temp_getTemp(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString);
 BaseType_t CLI_temp_getHum(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString);
-BaseType_t CLI_GetImuDataAngular(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString);
+BaseType_t CLI_GetImuAngularData(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString);
+BaseType_t CLI_GetImuAccelerationData(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString);

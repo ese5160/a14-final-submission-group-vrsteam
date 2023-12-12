@@ -28,9 +28,9 @@
  ******************************************************************************/
 static const char pcWelcomeMessage[]  = "FreeRTOS CLI.\r\nType Help to view a list of registered commands.\r\n";
 
-static const CLI_Command_Definition_t xImuGetCommand = {"acc", "acc: Returns acceleration value from the IMU.\r\n", (const pdCOMMAND_LINE_CALLBACK)CLI_GetImuData, 0};
+static const CLI_Command_Definition_t xImuGetAngularCommand = {"ang", "ang: Returns angular value from the IMU.\r\n", (const pdCOMMAND_LINE_CALLBACK)CLI_GetImuAngularData, 0};
 
-static const CLI_Command_Definition_t xImuGetAngularCommand = {"ang", "ang: Returns angular value from the IMU.\r\n", (const pdCOMMAND_LINE_CALLBACK)CLI_GetImuDataAngular, 0};
+static const CLI_Command_Definition_t xImuGetAcclerationCommand = {"acc", "acc: Returns acceleration value from the IMU.\r\n", (const pdCOMMAND_LINE_CALLBACK)CLI_GetImuAccelerationData, 0};
 
 static const CLI_Command_Definition_t xOTAUCommand = {"fw", "fw: Download a file and perform an FW update.\r\n", (const pdCOMMAND_LINE_CALLBACK)CLI_OTAU, 0};
 
@@ -86,7 +86,6 @@ void vCommandConsoleTask(void *pvParameters)
 {
     // REGISTER COMMANDS HERE
     FreeRTOS_CLIRegisterCommand(&xOTAUCommand);
-    FreeRTOS_CLIRegisterCommand(&xImuGetCommand);
     FreeRTOS_CLIRegisterCommand(&xClearScreen);
     FreeRTOS_CLIRegisterCommand(&xResetCommand);
     //FreeRTOS_CLIRegisterCommand(&xNeotrellisTurnLEDCommand);
@@ -100,7 +99,7 @@ void vCommandConsoleTask(void *pvParameters)
     FreeRTOS_CLIRegisterCommand(&xTempGetCommand);
     FreeRTOS_CLIRegisterCommand(&xHumGetCommand);
     FreeRTOS_CLIRegisterCommand(&xImuGetAngularCommand);
-
+    FreeRTOS_CLIRegisterCommand(&xImuGetAcclerationCommand);
 
     char cRxedChar[2];
     unsigned char cInputIndex = 0;
@@ -276,7 +275,7 @@ void CliCharReadySemaphoreGiveFromISR(void)
  ******************************************************************************/
 
 // Example CLI Command. Reads from the IMU and returns data.
-BaseType_t CLI_GetImuData(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString)
+BaseType_t CLI_GetImuAngularData(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString)
 {
     static int16_t data_raw_acceleration[3];
     static float acceleration_mg[3];
@@ -292,14 +291,14 @@ BaseType_t CLI_GetImuData(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const i
         acceleration_mg[0] = lsm6dsm_from_fs2_to_mg(data_raw_acceleration[0]);
         acceleration_mg[1] = lsm6dsm_from_fs2_to_mg(data_raw_acceleration[1]);
         acceleration_mg[2] = lsm6dsm_from_fs2_to_mg(data_raw_acceleration[2]);
-	    snprintf((char *)pcWriteBuffer, xWriteBufferLen, "Acceleration [mg]:X %d\tY %d\tZ %d\r\n", (int)acceleration_mg[0], (int)acceleration_mg[1], (int)acceleration_mg[2]);
+	    snprintf((char *)pcWriteBuffer, xWriteBufferLen, "Angular: X %d\tY %d\tZ %d\r\n", (int)acceleration_mg[0], (int)acceleration_mg[1], (int)acceleration_mg[2]);
     } else {
         snprintf((char *)pcWriteBuffer, xWriteBufferLen, "No data ready! \r\n");	
     }
     return pdFALSE;	
 }
 
-BaseType_t CLI_GetImuDataAngular(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString)
+BaseType_t CLI_GetImuAccelerationData(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString)
 {   
     static int16_t data_raw_angular[3];
     static float angular_mg[3];
@@ -315,7 +314,7 @@ BaseType_t CLI_GetImuDataAngular(int8_t *pcWriteBuffer, size_t xWriteBufferLen, 
 	    angular_mg[0] = lsm6dsm_from_fs2_to_mg(data_raw_angular[0]);
 	    angular_mg[1] = lsm6dsm_from_fs2_to_mg(data_raw_angular[1]);
 	    angular_mg[2] = lsm6dsm_from_fs2_to_mg(data_raw_angular[2]);  
-        snprintf((char *)pcWriteBuffer, xWriteBufferLen, "Angular :X %d\tY %d\tZ %d\r\n", (int)angular_mg[0], (int)angular_mg[1], (int)angular_mg[2]);
+        snprintf((char *)pcWriteBuffer, xWriteBufferLen, "Acceleration: X %d\tY %d\tZ %d\r\n", (int)angular_mg[0], (int)angular_mg[1], (int)angular_mg[2]);
     } else {
         snprintf((char *)pcWriteBuffer, xWriteBufferLen, "No data ready! \r\n");
     }

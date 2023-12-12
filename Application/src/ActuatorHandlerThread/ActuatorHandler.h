@@ -5,4 +5,7 @@
 
 extern SemaphoreHandle_t xAccidentDetectedSemaphore;
 
+extern int global_hum;
+extern int global_temp;
+
 void vActuatorHandlerTask(void *pvParameters);
