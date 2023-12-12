@@ -46,6 +46,11 @@ static TaskHandle_t controlTaskHandle = NULL;  //!< Control task handle
 
 SemaphoreHandle_t xAccidentDetectedSemaphore = NULL;
 
+int global_temp = 0;
+int global_hum = 0;
+int global_acc[3] = {0, 0, 0};
+int global_gyro[3] = {0, 0, 0};
+
 char bufferPrint[64];  ///< Buffer for daemon task
 
 /**

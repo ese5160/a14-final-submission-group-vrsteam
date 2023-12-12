@@ -724,7 +724,7 @@ BaseType_t CLI_temp_getTemp(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const
 			}
 		}		
 		int T;
-		T = (((temp_hum_read_buffer[0]/16.0)*4096 + (temp_hum_read_buffer[0]%16)*256 + (temp_hum_read_buffer[1]/16)*16 + temp_hum_read_buffer[1]%16)*175)/65536-45;
+		T = ((((temp_hum_read_buffer[0]/16.0)*4096 + (temp_hum_read_buffer[0]%16)*256 + (temp_hum_read_buffer[1]/16)*16 + temp_hum_read_buffer[1]%16)*175)/65536-45);
         SerialConsoleWriteString("Obtained Temperature Value: ");
         snprintf(bufCli, CLI_MSG_LEN - 1, "%d\r\n", T);
         SerialConsoleWriteString(bufCli);
@@ -784,7 +784,7 @@ BaseType_t CLI_temp_getHum(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const 
 			}
 		}		
 		int RH;
-		RH = (((temp_hum_read_buffer[0]/16.0)*4096 + (temp_hum_read_buffer[0]%16)*256 + (temp_hum_read_buffer[1]/16)*16 + temp_hum_read_buffer[1]%16)*100)/65536;
+		RH = ((((temp_hum_read_buffer[0]/16.0)*4096 + (temp_hum_read_buffer[0]%16)*256 + (temp_hum_read_buffer[1]/16)*16 + temp_hum_read_buffer[1]%16)*100)/65536);
         SerialConsoleWriteString("Obtained Humidity Value: ");
         snprintf(bufCli, CLI_MSG_LEN - 1, "%d\r\n", RH);
         SerialConsoleWriteString(bufCli);

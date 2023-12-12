@@ -33,3 +33,56 @@ void temp_hum_configure_i2c_master(void)
 	i2c_master_enable(&i2c_master_instance);
 }
 
+int temp_hum_get_val(bool temp_or_hum){
+		temp_hum_write_buffer[0] = 0x35;
+		temp_hum_write_buffer[1] = 0x17;
+		temp_hum_packet.data_length = 2;
+		while (i2c_master_write_packet_wait(&i2c_master_instance, &temp_hum_packet) !=
+		STATUS_OK) {
+			/* Increment timeout counter and check if timed out. */
+			if (timeout++ == TIMEOUT) {
+				break;
+			}
+		}		
+		
+		/* Write buffer to slave until success. */
+		//packet.data = write_buffer;
+        //Read RH first
+		temp_hum_packet.data_length = 2;		
+		temp_hum_write_buffer[0] = 0x5C;
+		temp_hum_write_buffer[1] = 0x24;
+		/*timeout=0;*/
+		while (i2c_master_write_packet_wait(&i2c_master_instance, &temp_hum_packet) !=
+		STATUS_OK) {
+			/* Increment timeout counter and check if timed out. */
+			if (timeout++ == TIMEOUT) {
+				break;
+			}
+		}		
+		    
+			/* Read from slave until success. */
+	    temp_hum_packet.data = temp_hum_read_buffer;
+		temp_hum_packet.data_length  = 6;
+	    while (i2c_master_read_packet_wait(&i2c_master_instance, &temp_hum_packet) !=
+	    STATUS_OK) {
+		    /* Increment timeout counter and check if timed out. */
+		    if (timeout++ == TIMEOUT) {
+			    break;
+		    }
+	    }
+		//printf("Data value: %d\r\n", packet.data[0]);
+		
+		/*sleep*/
+		temp_hum_packet.data = temp_hum_write_buffer;
+		temp_hum_write_buffer[0] = 0xB0;
+		temp_hum_write_buffer[1] = 0x98;
+		temp_hum_packet.data_length  = 2;
+		while (i2c_master_write_packet_wait(&i2c_master_instance, &temp_hum_packet) !=
+		STATUS_OK) {
+			/* Increment timeout counter and check if timed out. */
+			if (timeout++ == TIMEOUT) {
+				break;
+			}
+		}		
+		return (temp_or_hum) ? ((((temp_hum_read_buffer[0]/16.0)*4096 + (temp_hum_read_buffer[0]%16)*256 + (temp_hum_read_buffer[1]/16)*16 + temp_hum_read_buffer[1]%16)*175)/65536-45) : ((((temp_hum_read_buffer[0]/16.0)*4096 + (temp_hum_read_buffer[0]%16)*256 + (temp_hum_read_buffer[1]/16)*16 + temp_hum_read_buffer[1]%16)*100)/65536);
+}
