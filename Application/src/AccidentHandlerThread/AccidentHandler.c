@@ -4,6 +4,7 @@
 
 
 int counter = 0;
+extern int prev_temp;
 
 bool accidentHappened(int temp, int hum){
     if(temp > 39 || hum > 80) return true;
