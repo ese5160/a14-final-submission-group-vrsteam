@@ -1316,6 +1316,7 @@
     <Folder Include="Debug\src\WifiHandlerThread\" />
     <Folder Include="src\" />
     <Folder Include="src\AccidentHandlerThread\" />
+    <Folder Include="src\ActuatorHandlerThread\" />
     <Folder Include="src\ASF\" />
     <Folder Include="src\ASF\common2\" />
     <Folder Include="src\ASF\common2\components\" />
@@ -2304,6 +2305,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\AccidentHandlerThread\AccidentHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ActuatorHandlerThread\ActuatorHandler.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ActuatorHandlerThread\ActuatorHandler.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\ASF\common2\components\display\ssd1306\ssd1306.c">

@@ -38,6 +38,7 @@ void vApplicationTickHook(void);
  ******************************************************************************/
 static TaskHandle_t cliTaskHandle = NULL;      //!< CLI task handle
 static TaskHandle_t accidentTaskHandle = NULL;      //!< CLI task handle
+static TaskHandle_t actuatorTaskHandle = NULL;  //!< Control task handle
 static TaskHandle_t daemonTaskHandle = NULL;   //!< Daemon task handle
 static TaskHandle_t wifiTaskHandle = NULL;     //!< Wifi task handle
 static TaskHandle_t uiTaskHandle = NULL;       //!< UI task handle
@@ -151,14 +152,21 @@ static void StartTasks(void)
     snprintf(bufferPrint, 64, "Heap before starting tasks: %d\r\n", xPortGetFreeHeapSize());
     SerialConsoleWriteString(bufferPrint);
 
-    // Initialize Tasks here
-
     if (xTaskCreate(vAccidentHandlerTask, "ACCIDENT_TASK", ACCIDENT_TASK_SIZE, NULL, ACCIDENT_PRIORITY, &accidentTaskHandle) != pdPASS) {
         SerialConsoleWriteString("ERR: ACCIDENT task could not be initialized!\r\n");
     }
 
     snprintf(bufferPrint, 64, "Heap after starting CLI: %d\r\n", xPortGetFreeHeapSize());
     SerialConsoleWriteString(bufferPrint);
+
+    if (xTaskCreate(vActuatorHandlerTask, "ACTUATOR_TASK", ACTUATOR_TASK_SIZE, NULL, ACTUATOR_PRIORITY, &actuatorTaskHandle) != pdPASS) {
+        SerialConsoleWriteString("ERR: Actuator could not be initialized!\r\n");
+    }
+
+    snprintf(bufferPrint, 64, "Heap after starting actuator: %d\r\n", xPortGetFreeHeapSize());
+    SerialConsoleWriteString(bufferPrint);
+
+    // Initialize Tasks here
 
     if (xTaskCreate(vWifiTask, "WIFI_TASK", WIFI_TASK_SIZE, NULL, WIFI_PRIORITY, &wifiTaskHandle) != pdPASS) {
         SerialConsoleWriteString("ERR: WIFI task could not be initialized!\r\n");
@@ -173,11 +181,12 @@ static void StartTasks(void)
     snprintf(bufferPrint, 64, "Heap after starting UI Task: %d\r\n", xPortGetFreeHeapSize());
     SerialConsoleWriteString(bufferPrint);
 
-    if (xTaskCreate(vControlHandlerTask, "Control Task", CONTROL_TASK_SIZE, NULL, CONTROL_TASK_PRIORITY, &controlTaskHandle) != pdPASS) {
-        SerialConsoleWriteString("ERR: Control task could not be initialized!\r\n");
-    }
-    snprintf(bufferPrint, 64, "Heap after starting Control Task: %d\r\n", xPortGetFreeHeapSize());
-    SerialConsoleWriteString(bufferPrint);
+
+    // if (xTaskCreate(vControlHandlerTask, "Control Task", CONTROL_TASK_SIZE, NULL, CONTROL_TASK_PRIORITY, &controlTaskHandle) != pdPASS) {
+    //     SerialConsoleWriteString("ERR: Control task could not be initialized!\r\n");
+    // }
+    // snprintf(bufferPrint, 64, "Heap after starting Control Task: %d\r\n", xPortGetFreeHeapSize());
+    // SerialConsoleWriteString(bufferPrint);
 }
 
 

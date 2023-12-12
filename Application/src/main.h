@@ -57,6 +57,7 @@ extern "C" {
 #include "UiHandlerThread/UiHandlerThread.h"
 #include "WifiHandlerThread/WifiHandler.h"
 #include "AccidentHandlerThread/AccidentHandler.h"
+#include "ActuatorHandlerThread/ActuatorHandler.h"
 #include "pwmDriver/pwm.h"
 #include "asf.h"
 #include "driver/include/m2m_wifi.h"
