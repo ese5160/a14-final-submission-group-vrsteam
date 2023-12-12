@@ -4,6 +4,9 @@
 // PA24 and PA25 corresponds to WO2 and WO3 of TCC1 respectively
 
 void configure_tcc(void) {
+    struct system_pinmux_config tcc_pinmux;
+    
+
     tcc_get_config_defaults(&config_tcc, TCC1); // Use TCC0
     // Configure the pinmux for the TCC PWM output
     struct port_config pin_conf;

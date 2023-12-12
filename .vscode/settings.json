@@ -13,6 +13,7 @@
         "serialconsole.h": "c",
         "lsm6dsm_reg.h": "c",
         "seesaw.h": "c",
-        "lsm6dso_reg.h": "c"
+        "lsm6dso_reg.h": "c",
+        "accidenthandler.h": "c"
     }
 }
