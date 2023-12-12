@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "pwm.h": "c",
+        "asf.h": "c",
+        "clock_config_check.h": "c",
+        "wifihandler.h": "c",
+        "main.h": "c",
+        "stdio_serial.h": "c",
+        "clithread.h": "c",
+        "freertos_cli.h": "c",
+        "temphum.h": "c",
+        "uihandlerthread.h": "c",
+        "serialconsole.h": "c",
+        "lsm6dsm_reg.h": "c",
+        "seesaw.h": "c",
+        "lsm6dso_reg.h": "c"
+    }
+}

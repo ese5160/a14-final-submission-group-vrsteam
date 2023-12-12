@@ -1,0 +1,400 @@
+T8BDC 89871:383.081   SEGGER J-Link V7.94a Log File
+T8BDC 89871:383.143   DLL Compiled: Dec  6 2023 16:01:39
+T8BDC 89871:383.180   Logging started @ 2023-12-11 21:50
+T8BDC 89871:383.192   Process: C:\Program Files (x86)\Atmel\Studio\7.0\atbackend\atbackend.exe
+T8BDC 89871:383.204 - 226835.345ms
+T8BDC 89871:387.270 JLINK_ExecCommand("Device = ATSAMD21G18A", ...). 
+T8BDC 89871:387.480   Device "ATSAMD21G18A" selected.
+T8BDC 89871:392.766 - 5.471ms returns 0x00
+T8BDC 89871:408.164 JLINK_TIF_Select(JLINKARM_TIF_SWD)
+T8BDC 89871:408.663 - 0.498ms returns 0x00
+T8BDC 89871:408.696 JLINK_SetSpeed(4000)
+T8BDC 89871:408.765 - 0.068ms
+T8BDC 89871:408.787 JLINK_ResetPullsRESET(OFF)
+T8BDC 89871:408.799 - 0.011ms
+T8BDC 89871:408.811 JLINK_Connect()
+T8BDC 89871:409.058   InitTarget() start
+T8BDC 89871:409.065    J-Link Script File: Executing InitTarget()
+T8BDC 89871:409.076   InitTarget()
+T8BDC 89871:411.379   InitTarget() end - Took 2.28ms
+T8BDC 89871:411.903   Found SW-DP with ID 0x0BC11477
+T8BDC 89871:413.791   DPIDR: 0x0BC11477
+T8BDC 89871:413.805   CoreSight SoC-400 or earlier
+T8BDC 89871:413.814   Scanning AP map to find all available APs
+T8BDC 89871:414.344   AP[1]: Stopped AP scan as end of AP map has been reached
+T8BDC 89871:414.355   AP[0]: AHB-AP (IDR: 0x04770031)
+T8BDC 89871:414.365   Iterating through AP map to find AHB-AP to use
+T8BDC 89871:415.235   AP[0]: Core found
+T8BDC 89871:415.245   AP[0]: AHB-AP ROM base: 0x41003000
+T8BDC 89871:415.677   CPUID register: 0x410CC601. Implementer code: 0x41 (ARM)
+T8BDC 89871:415.688   Found Cortex-M0 r0p1, Little endian.
+T8BDC 89871:415.927   -- Max. mem block: 0x00002B08
+T8BDC 89871:416.306   CPU_ReadMem(4 bytes @ 0xE000EDF0)
+T8BDC 89871:416.560   CPU_WriteMem(4 bytes @ 0xE000EDF0)
+T8BDC 89871:416.857   CPU_ReadMem(4 bytes @ 0xE0002000)
+T8BDC 89871:417.122   FPUnit: 4 code (BP) slots and 0 literal slots
+T8BDC 89871:417.128   CPU_ReadMem(4 bytes @ 0xE000EDFC)
+T8BDC 89871:417.434   CPU_WriteMem(4 bytes @ 0xE000EDFC)
+T8BDC 89871:417.742   CPU_ReadMem(4 bytes @ 0xE0001000)
+T8BDC 89871:417.987   CPU_WriteMem(4 bytes @ 0xE0001000)
+T8BDC 89871:418.349   CoreSight components:
+T8BDC 89871:418.360   ROMTbl[0] @ 41003000
+T8BDC 89871:418.367   CPU_ReadMem(64 bytes @ 0x41003000)
+T8BDC 89871:419.050   CPU_ReadMem(32 bytes @ 0xE00FFFE0)
+T8BDC 89871:419.542   [0][0]: E00FF000 CID B105100D PID 000BB4C0 ROM Table
+T8BDC 89871:419.555   ROMTbl[1] @ E00FF000
+T8BDC 89871:419.564   CPU_ReadMem(64 bytes @ 0xE00FF000)
+T8BDC 89871:420.286   CPU_ReadMem(32 bytes @ 0xE000EFE0)
+T8BDC 89871:420.821   [1][0]: E000E000 CID B105E00D PID 000BB008 SCS
+T8BDC 89871:420.828   CPU_ReadMem(32 bytes @ 0xE0001FE0)
+T8BDC 89871:421.337   [1][1]: E0001000 CID B105E00D PID 000BB00A DWT
+T8BDC 89871:421.344   CPU_ReadMem(32 bytes @ 0xE0002FE0)
+T8BDC 89871:421.866   [1][2]: E0002000 CID B105E00D PID 000BB00B FPB
+T8BDC 89871:421.873   CPU_ReadMem(32 bytes @ 0x41006FE0)
+T8BDC 89871:422.398   [0][1]: 41006000 CID B105900D PID 001BB932 MTB-M0+
+T8BDC 89871:422.408 - 13.597ms returns 0x00
+T8BDC 89871:422.436 JLINK_ExecCommand("ExcludeFlashCacheRange 0x0 - 0x40000", ...). 
+T8BDC 89871:422.443 - 0.001ms returns 0x00
+T8BDC 89871:422.483 JLINK_Halt()
+T8BDC 89871:425.219 - 2.733ms returns 0x00
+T8BDC 89871:425.904 JLINK_JTAG_GetDeviceID(DeviceIndex = 0)
+T8BDC 89871:425.914 - 0.009ms returns 0
+T8BDC 89871:425.920 JLINK_ReadMemU32(0x41002018, 0x1 Items)
+T8BDC 89871:425.932   CPU_ReadMem(4 bytes @ 0x41002018)
+T8BDC 89871:426.192   Data:  05 03 01 10
+T8BDC 89871:426.201 - 0.281ms returns 1 (0x1)
+T3270 89871:435.806 JLINK_IsHalted()
+T3270 89871:436.083 - 0.276ms returns TRUE
+T3270 89871:436.097 JLINK_GetMOEs(...)
+T3270 89871:436.105   CPU_ReadMem(4 bytes @ 0xE000ED30)
+T3270 89871:436.406 - 0.309ms returns 0x01
+T3270 89871:436.412 JLINK_ReadReg(R15 (PC))
+T3270 89871:436.419 - 0.006ms returns 0x00028FBC
+T8BDC 89871:443.154 JLINK_BeginDownload(Flags = 0x00000000)
+T8BDC 89871:443.168 - 0.014ms
+T8BDC 89871:443.179 JLINK_WriteMem(0x00000000, 0xCACC Bytes, ...)
+T8BDC 89871:443.183   Data:  08 2D 00 20 2D 70 00 00 25 71 00 00 25 71 00 00 ...
+T8BDC 89871:443.427   completely In flash
+T8BDC 89871:443.440 - 0.261ms returns 0xCACC
+T8BDC 89871:443.642 JLINK_WriteMem(0x0000CACC, 0xC4 Bytes, ...)
+T8BDC 89871:443.648   Data:  40 1F 00 00 08 00 00 00 07 01 00 00 30 3A 73 64 ...
+T8BDC 89871:443.658   completely In flash
+T8BDC 89871:443.664 - 0.022ms returns 0xC4
+T3270 89871:636.673 JLINK_IsHalted()
+T3270 89871:636.737 - 0.064ms returns TRUE
+T8BDC 89871:638.081 JLINK_EndDownload()
+T8BDC 89871:638.329   CPU_ReadMem(4 bytes @ 0x41006004)
+T8BDC 89871:638.717   CPU_ReadMem(4 bytes @ 0xE000ED90)
+T8BDC 89871:639.052    -- --------------------------------------
+T8BDC 89871:639.068    -- Flash bank @ 0x00000000: Default: L2 verify disabled because algorithm performs L1 verify
+T8BDC 89871:639.082    -- Start of determining dirty areas in flash cache
+T8BDC 89871:639.096    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00000000 if necessary
+T8BDC 89871:639.110    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00000100 if necessary
+T8BDC 89871:639.122    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00000200 if necessary
+T8BDC 89871:639.135    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00000300 if necessary
+T8BDC 89871:639.147    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00000400 if necessary
+T8BDC 89871:639.159    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00000500 if necessary
+T8BDC 89871:639.172    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00000600 if necessary
+T8BDC 89871:639.184    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00000700 if necessary
+T8BDC 89871:639.197    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00000800 if necessary
+T8BDC 89871:639.209    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00000900 if necessary
+T8BDC 89871:639.221    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00000A00 if necessary
+T8BDC 89871:639.234    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00000B00 if necessary
+T8BDC 89871:639.246    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00000C00 if necessary
+T8BDC 89871:639.258    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00000D00 if necessary
+T8BDC 89871:639.271    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00000E00 if necessary
+T8BDC 89871:639.283    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00000F00 if necessary
+T8BDC 89871:639.296    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00001000 if necessary
+T8BDC 89871:639.308    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00001100 if necessary
+T8BDC 89871:639.320    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00001200 if necessary
+T8BDC 89871:639.333    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00001300 if necessary
+T8BDC 89871:639.345    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00001400 if necessary
+T8BDC 89871:639.357    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00001500 if necessary
+T8BDC 89871:639.370    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00001600 if necessary
+T8BDC 89871:639.382    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00001700 if necessary
+T8BDC 89871:639.395    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00001800 if necessary
+T8BDC 89871:639.407    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00001900 if necessary
+T8BDC 89871:639.419    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00001A00 if necessary
+T8BDC 89871:639.431    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00001B00 if necessary
+T8BDC 89871:639.501    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00001C00 if necessary
+T8BDC 89871:639.513    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00001D00 if necessary
+T8BDC 89871:639.524    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00001E00 if necessary
+T8BDC 89871:639.536    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00001F00 if necessary
+T8BDC 89871:639.547    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00002000 if necessary
+T8BDC 89871:639.558    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00002100 if necessary
+T8BDC 89871:639.570    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00002200 if necessary
+T8BDC 89871:639.581    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00002300 if necessary
+T8BDC 89871:639.593    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00002400 if necessary
+T8BDC 89871:639.604    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00002500 if necessary
+T8BDC 89871:639.615    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00002600 if necessary
+T8BDC 89871:639.627    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00002700 if necessary
+T8BDC 89871:639.638    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00002800 if necessary
+T8BDC 89871:639.650    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00002900 if necessary
+T8BDC 89871:639.661    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00002A00 if necessary
+T8BDC 89871:639.672    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00002B00 if necessary
+T8BDC 89871:639.695    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00002C00 if necessary
+T8BDC 89871:639.706    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00002D00 if necessary
+T8BDC 89871:639.718    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00002E00 if necessary
+T8BDC 89871:639.729    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00002F00 if necessary
+T8BDC 89871:639.740    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00003000 if necessary
+T8BDC 89871:639.752    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00003100 if necessary
+T8BDC 89871:639.763    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00003200 if necessary
+T8BDC 89871:639.774    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00003300 if necessary
+T8BDC 89871:639.786    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00003400 if necessary
+T8BDC 89871:639.797    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00003500 if necessary
+T8BDC 89871:639.808    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00003600 if necessary
+T8BDC 89871:639.820    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00003700 if necessary
+T8BDC 89871:639.831    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00003800 if necessary
+T8BDC 89871:639.842    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00003900 if necessary
+T8BDC 89871:639.854    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00003A00 if necessary
+T8BDC 89871:639.865    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00003B00 if necessary
+T8BDC 89871:639.877    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00003C00 if necessary
+T8BDC 89871:639.888    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00003D00 if necessary
+T8BDC 89871:639.899    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00003E00 if necessary
+T8BDC 89871:639.913    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00003F00 if necessary
+T8BDC 89871:639.924    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00004000 if necessary
+T8BDC 89871:639.935    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00004100 if necessary
+T8BDC 89871:639.946    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00004200 if necessary
+T8BDC 89871:639.958    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00004300 if necessary
+T8BDC 89871:639.969    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00004400 if necessary
+T8BDC 89871:639.980    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00004500 if necessary
+T8BDC 89871:639.992    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00004600 if necessary
+T8BDC 89871:640.003    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00004700 if necessary
+T8BDC 89871:640.014    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00004800 if necessary
+T8BDC 89871:640.026    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00004900 if necessary
+T8BDC 89871:640.037    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00004A00 if necessary
+T8BDC 89871:640.048    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00004B00 if necessary
+T8BDC 89871:640.060    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00004C00 if necessary
+T8BDC 89871:640.071    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00004D00 if necessary
+T8BDC 89871:640.082    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00004E00 if necessary
+T8BDC 89871:640.093    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00004F00 if necessary
+T8BDC 89871:640.105    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00005000 if necessary
+T8BDC 89871:640.116    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00005100 if necessary
+T8BDC 89871:640.127    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00005200 if necessary
+T8BDC 89871:640.139    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00005300 if necessary
+T8BDC 89871:640.150    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00005400 if necessary
+T8BDC 89871:640.161    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00005500 if necessary
+T8BDC 89871:640.173    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00005600 if necessary
+T8BDC 89871:640.184    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00005700 if necessary
+T8BDC 89871:640.195    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00005800 if necessary
+T8BDC 89871:640.206    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00005900 if necessary
+T8BDC 89871:640.216    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00005A00 if necessary
+T8BDC 89871:640.225    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00005B00 if necessary
+T8BDC 89871:640.235    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00005C00 if necessary
+T8BDC 89871:640.244    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00005D00 if necessary
+T8BDC 89871:640.253    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00005E00 if necessary
+T8BDC 89871:640.263    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00005F00 if necessary
+T8BDC 89871:640.272    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00006000 if necessary
+T8BDC 89871:640.299    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00006100 if necessary
+T8BDC 89871:640.309    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00006200 if necessary
+T8BDC 89871:640.318    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00006300 if necessary
+T8BDC 89871:640.328    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00006400 if necessary
+T8BDC 89871:640.337    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00006500 if necessary
+T8BDC 89871:640.347    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00006600 if necessary
+T8BDC 89871:640.356    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00006700 if necessary
+T8BDC 89871:640.365    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00006800 if necessary
+T8BDC 89871:640.375    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00006900 if necessary
+T8BDC 89871:640.384    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00006A00 if necessary
+T8BDC 89871:640.394    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00006B00 if necessary
+T8BDC 89871:640.403    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00006C00 if necessary
+T8BDC 89871:640.412    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00006D00 if necessary
+T8BDC 89871:640.422    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00006E00 if necessary
+T8BDC 89871:640.431    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00006F00 if necessary
+T8BDC 89871:640.441    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00007000 if necessary
+T8BDC 89871:640.450    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00007100 if necessary
+T8BDC 89871:640.460    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00007200 if necessary
+T8BDC 89871:640.469    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00007300 if necessary
+T8BDC 89871:640.479    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00007400 if necessary
+T8BDC 89871:640.488    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00007500 if necessary
+T8BDC 89871:640.498    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00007600 if necessary
+T8BDC 89871:640.507    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00007700 if necessary
+T8BDC 89871:640.516    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00007800 if necessary
+T8BDC 89871:640.526    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00007900 if necessary
+T8BDC 89871:640.535    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00007A00 if necessary
+T8BDC 89871:640.545    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00007B00 if necessary
+T8BDC 89871:640.554    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00007C00 if necessary
+T8BDC 89871:640.570    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00007D00 if necessary
+T8BDC 89871:640.580    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00007E00 if necessary
+T8BDC 89871:640.589    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00007F00 if necessary
+T8BDC 89871:640.598    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00008000 if necessary
+T8BDC 89871:640.608    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00008100 if necessary
+T8BDC 89871:640.618    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00008200 if necessary
+T8BDC 89871:640.626    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00008300 if necessary
+T8BDC 89871:640.635    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00008400 if necessary
+T8BDC 89871:640.643    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00008500 if necessary
+T8BDC 89871:640.651    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00008600 if necessary
+T8BDC 89871:640.659    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00008700 if necessary
+T8BDC 89871:640.667    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00008800 if necessary
+T8BDC 89871:640.675    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00008900 if necessary
+T8BDC 89871:640.683    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00008A00 if necessary
+T8BDC 89871:640.691    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00008B00 if necessary
+T8BDC 89871:640.699    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00008C00 if necessary
+T8BDC 89871:640.707    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00008D00 if necessary
+T8BDC 89871:640.715    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00008E00 if necessary
+T8BDC 89871:640.724    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00008F00 if necessary
+T8BDC 89871:640.732    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00009000 if necessary
+T8BDC 89871:640.740    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00009100 if necessary
+T8BDC 89871:640.748    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00009200 if necessary
+T8BDC 89871:640.756    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00009300 if necessary
+T8BDC 89871:640.764    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00009400 if necessary
+T8BDC 89871:640.772    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00009500 if necessary
+T8BDC 89871:640.780    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00009600 if necessary
+T8BDC 89871:640.788    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00009700 if necessary
+T8BDC 89871:640.796    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00009800 if necessary
+T8BDC 89871:640.804    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00009900 if necessary
+T8BDC 89871:640.812    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00009A00 if necessary
+T8BDC 89871:640.820    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00009B00 if necessary
+T8BDC 89871:640.829    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00009C00 if necessary
+T8BDC 89871:640.837    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00009D00 if necessary
+T8BDC 89871:640.845    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00009E00 if necessary
+T8BDC 89871:640.853    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x00009F00 if necessary
+T8BDC 89871:640.861    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000A000 if necessary
+T8BDC 89871:640.869    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000A100 if necessary
+T8BDC 89871:640.877    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000A200 if necessary
+T8BDC 89871:640.885    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000A300 if necessary
+T8BDC 89871:640.893    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000A400 if necessary
+T8BDC 89871:640.901    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000A500 if necessary
+T8BDC 89871:640.910    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000A600 if necessary
+T8BDC 89871:640.919    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000A700 if necessary
+T8BDC 89871:640.927    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000A800 if necessary
+T8BDC 89871:640.935    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000A900 if necessary
+T8BDC 89871:640.943    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000AA00 if necessary
+T8BDC 89871:640.951    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000AB00 if necessary
+T8BDC 89871:640.959    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000AC00 if necessary
+T8BDC 89871:640.967    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000AD00 if necessary
+T8BDC 89871:640.975    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000AE00 if necessary
+T8BDC 89871:640.983    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000AF00 if necessary
+T8BDC 89871:640.991    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000B000 if necessary
+T8BDC 89871:640.999    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000B100 if necessary
+T8BDC 89871:641.007    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000B200 if necessary
+T8BDC 89871:641.016    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000B300 if necessary
+T8BDC 89871:641.024    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000B400 if necessary
+T8BDC 89871:641.032    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000B500 if necessary
+T8BDC 89871:641.040    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000B600 if necessary
+T8BDC 89871:641.048    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000B700 if necessary
+T8BDC 89871:641.056    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000B800 if necessary
+T8BDC 89871:641.064    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000B900 if necessary
+T8BDC 89871:641.072    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000BA00 if necessary
+T8BDC 89871:641.080    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000BB00 if necessary
+T8BDC 89871:641.088    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000BC00 if necessary
+T8BDC 89871:641.096    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000BD00 if necessary
+T8BDC 89871:641.105    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000BE00 if necessary
+T8BDC 89871:641.113    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000BF00 if necessary
+T8BDC 89871:641.121    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000C000 if necessary
+T8BDC 89871:641.129    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000C100 if necessary
+T8BDC 89871:641.137    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000C200 if necessary
+T8BDC 89871:641.145    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000C300 if necessary
+T8BDC 89871:641.153    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000C400 if necessary
+T8BDC 89871:641.161    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000C500 if necessary
+T8BDC 89871:641.169    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000C600 if necessary
+T8BDC 89871:641.177    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000C700 if necessary
+T8BDC 89871:641.185    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000C800 if necessary
+T8BDC 89871:641.194    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000C900 if necessary
+T8BDC 89871:641.208    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000CA00 if necessary
+T8BDC 89871:641.216    -- Filling invalid ranges in sector buffer (flash cache) for sector @ 0x0000CB00 if necessary
+T8BDC 89871:641.266    -- End of determining dirty areas
+T8BDC 89871:641.274    -- Start of preparing flash programming
+T8BDC 89871:641.283    -- Calculating RAM usage
+T8BDC 89871:641.314    -- RAM usage = 3908 Bytes
+T8BDC 89871:641.320    -- Preserving CPU registers
+T8BDC 89871:641.335    -- Preparing target
+T8BDC 89871:641.342    -- Preserving target RAM temporarily used for programming
+T8BDC 89871:662.121    -- Downloading RAMCode
+T8BDC 89871:678.611    -- Preparing RAMCode
+T8BDC 89871:684.121    -- End of preparing flash programming
+T8BDC 89871:688.608    -- CPU speed could not be measured.
+T8BDC 89871:688.621    -- Start of comparing flash
+T8BDC 89871:688.628    -- CRC check was estimated as fastest method
+T8BDC 89871:708.823    -- Comparing range 0x0000 - 0x7FFF (128 Sectors, 32 KB), using multi-block CRC calculation
+T8BDC 89871:738.108    -- All CRCs match
+T8BDC 89871:738.359    -- Comparing range 0x8000 - 0xCBFF (76 Sectors, 19 KB), using multi-block CRC calculation
+T8BDC 89871:755.518    -- CRC does not match for sector 72
+T8BDC 89871:756.198    -- Comparing range 0x0000 - 0x7FFF (128 Sectors, 32 KB), using alternative multi-block CRC calculation
+T8BDC 89871:783.301    -- All CRCs match
+T8BDC 89871:783.679    -- Comparing range 0x8000 - 0xC7FF (72 Sectors, 18 KB), using alternative multi-block CRC calculation
+T8BDC 89871:799.392    -- All CRCs match
+T8BDC 89871:800.753    -- Comparing range 0xC900 - 0xCBFF (3 Sectors, 768 Bytes), using alternative multi-block CRC calculation
+T8BDC 89871:804.195    -- All CRCs match
+T8BDC 89871:804.216    -- End of comparing flash
+T8BDC 89871:804.223    -- Start of erasing sectors
+T8BDC 89871:804.231    -- Erasing range 0x0000C800 - 0x0000C8FF (  1 Sector, 256 Bytes)
+T8BDC 89871:809.533    -- End of erasing sectors
+T8BDC 89871:809.554    -- Start of flash programming
+T8BDC 89871:809.562    -- Programming range 0x0000C800 - 0x0000C8FF (  1 Sector, 256 Bytes)
+T8BDC 89871:810.761    -- End of flash programming
+T8BDC 89871:810.778    -- 0xC800 - 0xC8FF (  1 Sector, 256 Bytes)
+T8BDC 89871:810.786    -- Start of restoring
+T8BDC 89871:810.793    -- Restoring RAMCode
+T8BDC 89871:819.515    -- Restoring target memory
+T8BDC 89871:839.447    -- Restore target
+T8BDC 89871:839.478    -- Restoring CPU registers
+T8BDC 89871:839.497    -- End of restoring
+T8BDC 89871:839.550    -- Bank 0 @ 0x00000000: 1 range affected (256 bytes)
+T8BDC 89871:839.569    -- Total: 0.198s (Prepare: 0.047s, Compare: 0.115s, Erase: 0.005s, Program & Verify: 0.006s, Restore: 0.023s)
+T8BDC 89871:839.581    -- Program & Verify speed: 41 KB/s
+T8BDC 89871:843.038 - 204.956ms returns 256 (0x100)
+T8BDC 89871:843.094 JLINK_ResetPullsRESET(ON)
+T8BDC 89871:843.100 - 0.005ms
+T8BDC 89871:843.104 JLINK_ResetNoHalt()
+T8BDC 89871:843.340   InitTarget() start
+T8BDC 89871:843.366    J-Link Script File: Executing InitTarget()
+T8BDC 89871:843.377   InitTarget()
+T8BDC 89871:845.460   InitTarget() end - Took 2.07ms
+T8BDC 89871:846.141   Found SW-DP with ID 0x0BC11477
+T8BDC 89871:848.334   DPIDR: 0x0BC11477
+T8BDC 89871:848.351   CoreSight SoC-400 or earlier
+T8BDC 89871:848.361   AP map detection skipped. Manually configured AP map found.
+T8BDC 89871:848.370   AP[0]: AHB-AP (IDR: Not set)
+T8BDC 89871:849.208   AP[0]: Core found
+T8BDC 89871:849.223   AP[0]: AHB-AP ROM base: 0x41003000
+T8BDC 89871:849.690   CPUID register: 0x410CC601. Implementer code: 0x41 (ARM)
+T8BDC 89871:849.708   Found Cortex-M0 r0p1, Little endian.
+T8BDC 89871:849.888   -- Max. mem block: 0x000027A8
+T8BDC 89871:849.900   CPU_ReadMem(4 bytes @ 0xE000EDF0)
+T8BDC 89871:850.169   CPU_ReadMem(4 bytes @ 0xE0002000)
+T8BDC 89871:850.521   FPUnit: 4 code (BP) slots and 0 literal slots
+T8BDC 89871:850.572   CPU_ReadMem(4 bytes @ 0xE000EDFC)
+T8BDC 89871:850.821   CPU_ReadMem(4 bytes @ 0xE0001000)
+T8BDC 89871:851.081   CoreSight components:
+T8BDC 89871:851.091   ROMTbl[0] @ 41003000
+T8BDC 89871:851.097   CPU_ReadMem(64 bytes @ 0x41003000)
+T8BDC 89871:851.748   CPU_ReadMem(32 bytes @ 0xE00FFFE0)
+T8BDC 89871:852.271   [0][0]: E00FF000 CID B105100D PID 000BB4C0 ROM Table
+T8BDC 89871:852.310   ROMTbl[1] @ E00FF000
+T8BDC 89871:852.316   CPU_ReadMem(64 bytes @ 0xE00FF000)
+T8BDC 89871:852.985   CPU_ReadMem(32 bytes @ 0xE000EFE0)
+T8BDC 89871:853.521   [1][0]: E000E000 CID B105E00D PID 000BB008 SCS
+T8BDC 89871:853.561   CPU_ReadMem(32 bytes @ 0xE0001FE0)
+T8BDC 89871:854.020   [1][1]: E0001000 CID B105E00D PID 000BB00A DWT
+T8BDC 89871:854.027   CPU_ReadMem(32 bytes @ 0xE0002FE0)
+T8BDC 89871:854.545   [1][2]: E0002000 CID B105E00D PID 000BB00B FPB
+T8BDC 89871:854.559   CPU_ReadMem(32 bytes @ 0x41006FE0)
+T8BDC 89871:855.028   [0][1]: 41006000 CID B105900D PID 001BB932 MTB-M0+
+T8BDC 89871:855.043   JLINK_Reset()
+T8BDC 89871:855.049     CPU_ReadMem(4 bytes @ 0x20000000)
+T8BDC 89871:855.381     CPU_WriteMem(4 bytes @ 0x20000000)
+T8BDC 89871:855.698     ResetTarget() start
+T8BDC 89871:855.705      J-Link Script File: Executing ResetTarget()
+T8BDC 89871:855.712     CPU_ReadMem(4 bytes @ 0xE000EDFC)
+T8BDC 89871:856.142     CPU_WriteMem(4 bytes @ 0xE000EDFC)
+T8BDC 89871:856.433     CPU_WriteMem(4 bytes @ 0xE000ED0C)
+T8BDC 89871:858.658     CPU_ReadMem(4 bytes @ 0xE000EDF0)
+T8BDC 89871:858.977     CPU_ReadMem(4 bytes @ 0x41002100)
+T8BDC 89871:859.311     CPU_WriteMem(4 bytes @ 0xE000EDFC)
+T8BDC 89871:859.729     ResetTarget() end - Took 4.00ms
+T8BDC 89871:863.365     CPU_WriteMem(4 bytes @ 0xE0002000)
+T8BDC 89871:863.771     CPU_ReadMem(4 bytes @ 0xE000EDFC)
+T8BDC 89871:864.154     CPU_ReadMem(4 bytes @ 0xE0001000)
+T8BDC 89871:864.443     CPU_WriteMem(4 bytes @ 0xE0001000)
+T8BDC 89871:864.767   - 9.723ms
+T8BDC 89871:864.774   JLINK_Go()
+T8BDC 89871:864.786     CPU_ReadMem(4 bytes @ 0xE0001000)
+T8BDC 89871:865.151     CPU_WriteMem(4 bytes @ 0xE0001000)
+T8BDC 89871:865.623     CPU_WriteMem(4 bytes @ 0xE0001004)
+T8BDC 89871:866.420     Memory map 'after startup completion point' is active
+T8BDC 89871:866.428   - 1.653ms
+T8BDC 89871:866.432 - 23.327ms
+T8BDC 89871:875.548 JLINK_Close()
+T8BDC 89871:889.378 - 13.828ms
+T8BDC 89871:889.410   
+T8BDC 89871:889.414   Closed
