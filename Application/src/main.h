@@ -47,8 +47,8 @@ extern "C" {
 #include <errno.h>
 
 #include "CliThread/CliThread.h"
-#include "ControlThread\ControlThread.h"
-#include "DistanceDriver\DistanceSensor.h"
+#include "ControlThread/ControlThread.h"
+#include "DistanceDriver/DistanceSensor.h"
 #include "FreeRTOS.h"
 #include "IMU/lsm6dso_reg.h"
 #include "IMU/lsm6dsm_reg.h"
@@ -56,6 +56,7 @@ extern "C" {
 #include "SerialConsole.h"
 #include "UiHandlerThread/UiHandlerThread.h"
 #include "WifiHandlerThread/WifiHandler.h"
+#include "AccidentHandlerThread/AccidentHandler.h"
 #include "pwmDriver/pwm.h"
 #include "asf.h"
 #include "driver/include/m2m_wifi.h"

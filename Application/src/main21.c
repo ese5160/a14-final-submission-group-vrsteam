@@ -37,6 +37,7 @@ void vApplicationTickHook(void);
  * Variables
  ******************************************************************************/
 static TaskHandle_t cliTaskHandle = NULL;      //!< CLI task handle
+static TaskHandle_t accidentTaskHandle = NULL;      //!< CLI task handle
 static TaskHandle_t daemonTaskHandle = NULL;   //!< Daemon task handle
 static TaskHandle_t wifiTaskHandle = NULL;     //!< Wifi task handle
 static TaskHandle_t uiTaskHandle = NULL;       //!< UI task handle
@@ -145,6 +146,15 @@ static void StartTasks(void)
 
     if (xTaskCreate(vCommandConsoleTask, "CLI_TASK", CLI_TASK_SIZE, NULL, CLI_PRIORITY, &cliTaskHandle) != pdPASS) {
         SerialConsoleWriteString("ERR: CLI task could not be initialized!\r\n");
+    }
+
+    snprintf(bufferPrint, 64, "Heap before starting tasks: %d\r\n", xPortGetFreeHeapSize());
+    SerialConsoleWriteString(bufferPrint);
+
+    // Initialize Tasks here
+
+    if (xTaskCreate(vAccidentHandlerTask, "ACCIDENT_TASK", ACCIDENT_TASK_SIZE, NULL, ACCIDENT_PRIORITY, &accidentTaskHandle) != pdPASS) {
+        SerialConsoleWriteString("ERR: ACCIDENT task could not be initialized!\r\n");
     }
 
     snprintf(bufferPrint, 64, "Heap after starting CLI: %d\r\n", xPortGetFreeHeapSize());
