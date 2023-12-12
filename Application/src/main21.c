@@ -94,6 +94,14 @@ void vApplicationDaemonTaskStartupHook(void)
 {
     SerialConsoleWriteString("\r\n\r\n-----ESE516 Main Program-----\r\n");
 
+    xAccidentDetectedSemaphore = xSemaphoreCreateBinary();
+	if(xAccidentDetectedSemaphore == NULL)
+	{
+		// Handle semaphore creation failure
+		SerialConsoleWriteString("Failed to create binary semaphore!\r\n");
+		while(1);
+	}
+
     // Initialize HW that needs FreeRTOS Initialization
     SerialConsoleWriteString("\r\n\r\nInitialize HW...\r\n");
     if (I2cInitializeDriver() != STATUS_OK) {
@@ -145,14 +153,13 @@ static void StartTasks(void)
     snprintf(bufferPrint, 64, "Heap before starting tasks: %d\r\n", xPortGetFreeHeapSize());
     SerialConsoleWriteString(bufferPrint);
 
-    // Initialize Tasks here
 
-    if (xTaskCreate(vCommandConsoleTask, "CLI_TASK", CLI_TASK_SIZE, NULL, CLI_PRIORITY, &cliTaskHandle) != pdPASS) {
-        SerialConsoleWriteString("ERR: CLI task could not be initialized!\r\n");
-    }
+     if (xTaskCreate(vCommandConsoleTask, "CLI_TASK", CLI_TASK_SIZE, NULL, CLI_PRIORITY, &cliTaskHandle) != pdPASS) {
+	     SerialConsoleWriteString("ERR: CLI task could not be initialized!\r\n");
+     }
 
-    snprintf(bufferPrint, 64, "Heap before starting tasks: %d\r\n", xPortGetFreeHeapSize());
-    SerialConsoleWriteString(bufferPrint);
+     snprintf(bufferPrint, 64, "Heap before starting tasks: %d\r\n", xPortGetFreeHeapSize());
+    //SerialConsoleWriteString(bufferPrint);
 
     if (xTaskCreate(vAccidentHandlerTask, "ACCIDENT_TASK", ACCIDENT_TASK_SIZE, NULL, ACCIDENT_PRIORITY, &accidentTaskHandle) != pdPASS) {
         SerialConsoleWriteString("ERR: ACCIDENT task could not be initialized!\r\n");
@@ -170,11 +177,11 @@ static void StartTasks(void)
 
     // Initialize Tasks here
 
-    if (xTaskCreate(vWifiTask, "WIFI_TASK", WIFI_TASK_SIZE, NULL, WIFI_PRIORITY, &wifiTaskHandle) != pdPASS) {
-        SerialConsoleWriteString("ERR: WIFI task could not be initialized!\r\n");
-    }
-    snprintf(bufferPrint, 64, "Heap after starting WIFI: %d\r\n", xPortGetFreeHeapSize());
-    SerialConsoleWriteString(bufferPrint);
+    //if (xTaskCreate(vWifiTask, "WIFI_TASK", WIFI_TASK_SIZE, NULL, WIFI_PRIORITY, &wifiTaskHandle) != pdPASS) {
+        //SerialConsoleWriteString("ERR: WIFI task could not be initialized!\r\n");
+    //}
+    //snprintf(bufferPrint, 64, "Heap after starting WIFI: %d\r\n", xPortGetFreeHeapSize());
+    //SerialConsoleWriteString(bufferPrint);
 
     if (xTaskCreate(vUiHandlerTask, "UI Task", UI_TASK_SIZE, NULL, UI_TASK_PRIORITY, &uiTaskHandle) != pdPASS) {
         SerialConsoleWriteString("ERR: UI task could not be initialized!\r\n");
