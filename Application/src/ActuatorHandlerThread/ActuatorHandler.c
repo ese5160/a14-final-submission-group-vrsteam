@@ -23,10 +23,11 @@ void vActuatorHandlerTask(void *pvParameters)
                // SerialConsoleWriteString("Window position is changed!\r\n");
           
                //actuate motor driver to open water pump (PA24)
-               if(global_temp > 30){
+               if(global_temp > 35){
                     update_pwm_duty_cycle(48000, 2);
                     SerialConsoleWriteString("Water pump is opened!\r\n");
                }
+               //break;
           }
      }   
 	 
