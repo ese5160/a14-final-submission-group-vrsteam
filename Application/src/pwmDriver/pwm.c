@@ -6,6 +6,7 @@
 void configure_tcc(void) {
     struct system_pinmux_config tcc_pinmux_config;
 	system_pinmux_get_config_defaults(&tcc_pinmux_config);
+    tcc_pinmux_config.direction = SYSTEM_PINMUX_PIN_DIR_OUTPUT;
     tcc_pinmux_config.mux_position = MUX_PA24F_TCC1_WO2;
     system_pinmux_pin_set_config(PIN_PA24F_TCC1_WO2, &tcc_pinmux_config);
     tcc_pinmux_config.mux_position = MUX_PA25F_TCC1_WO3;
@@ -13,11 +14,11 @@ void configure_tcc(void) {
 
     tcc_get_config_defaults(&config_tcc, TCC1); // Use TCC0
     // Configure the pinmux for the TCC PWM output
-    struct port_config pin_conf;
-    port_get_config_defaults(&pin_conf);
-    pin_conf.direction = PORT_PIN_DIR_OUTPUT;
-    port_pin_set_config(PIN_PA24F_TCC1_WO2, &pin_conf); // Configure PA10 as TCC0, WO2
-    port_pin_set_config(PIN_PA25F_TCC1_WO3, &pin_conf); // Configure PA11 as TCC0, WO3
+    // struct port_config pin_conf;
+    // port_get_config_defaults(&pin_conf);
+    // pin_conf.direction = PORT_PIN_DIR_OUTPUT;
+    // port_pin_set_config(PIN_PA24F_TCC1_WO2, &pin_conf); // Configure PA10 as TCC0, WO2
+    // port_pin_set_config(PIN_PA25F_TCC1_WO3, &pin_conf); // Configure PA11 as TCC0, WO3
 
     // Set up the TCC for PWM generation on PA10 (WO6)
      config_tcc.counter.period = 960000;
