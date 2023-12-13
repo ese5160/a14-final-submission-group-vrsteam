@@ -301,7 +301,7 @@ static inline void _adc_configure_ain_pin(uint32_t pin)
 
 		/* Analog functions are all on MUX setting B */
 		config.input_pull   = SYSTEM_PINMUX_PIN_PULL_NONE;
-		config. = 1;
+		config.mux_position = 1;
 
 		system_pinmux_pin_set_config(pin_map_result, &config);
 	}
