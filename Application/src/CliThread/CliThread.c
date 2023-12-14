@@ -91,7 +91,7 @@ void vCommandConsoleTask(void *pvParameters)
     //FreeRTOS_CLIRegisterCommand(&xNeotrellisTurnLEDCommand);
     //FreeRTOS_CLIRegisterCommand(&xNeotrellisProcessButtonCommand);
     //FreeRTOS_CLIRegisterCommand(&xDistanceSensorGetDistance);
-    //FreeRTOS_CLIRegisterCommand(&xSendDummyGameData);
+    FreeRTOS_CLIRegisterCommand(&xSendDummyGameData);
 	FreeRTOS_CLIRegisterCommand(&xI2cScan);
     FreeRTOS_CLIRegisterCommand(&xServoChangePos);
     FreeRTOS_CLIRegisterCommand(&xMotorDriverCommand);

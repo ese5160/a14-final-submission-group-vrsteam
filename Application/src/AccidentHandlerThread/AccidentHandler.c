@@ -11,7 +11,7 @@ static char bufCli[CLI_MSG_LEN];
 
 
 bool accidentHappened(int temp, int hum, int acc, int gyro){
-    if(temp > 35 || hum > 80 || acc > 130 || gyro == 1) return true;
+    if(temp > 39 || hum > 80 || acc > 130 || gyro == 1) return true;
     else return false;
 }
 
@@ -38,7 +38,7 @@ void vAccidentHandlerTask(void *pvParameters)
         // global_temp = counter;
 
         global_temp = temp_hum_get_val(GET_TEMP_VAL);
-       // SerialConsoleWriteString("Obtained Temperature Value: ");
+        // SerialConsoleWriteString("Obtained Temperature Value: ");
         // snprintf(bufCli, CLI_MSG_LEN - 1, "%d\r\n", global_temp);
         // SerialConsoleWriteString(bufCli);
         

@@ -33,7 +33,7 @@ void vActuatorHandlerTask(void *pvParameters)
           
                //actuate motor driver to open water pump (PA24)
                //if((global_temp <= 35) && (prev_temp > 35)) {handled = false;}
-               if(global_temp > 35 /*&& (!handled)*/){
+               if(global_temp > 39 /*&& (!handled)*/){
                     SerialConsoleWriteString("F\r\n");
                     update_pwm_duty_cycle(48000, 2);
                     // SerialConsoleWriteString("Water pump is opened!\r\n");
