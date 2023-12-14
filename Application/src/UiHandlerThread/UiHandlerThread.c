@@ -67,7 +67,7 @@ uint8_t buttons[BUTTON_PRESSES_MAX];  ///< Array to hold button presses
 void vUiHandlerTask(void *pvParameters)
 {
     // Do initialization code here
-    SerialConsoleWriteString("UI Task Started!");
+    SerialConsoleWriteString("UI Task Started!\r\n");
     uiState = UI_STATE_IGNORE_PRESSES;  // Initial state
 
     // Graphics Test - Remove if not using

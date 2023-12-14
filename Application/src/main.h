@@ -50,6 +50,7 @@ extern "C" {
 #include "ControlThread/ControlThread.h"
 #include "DistanceDriver/DistanceSensor.h"
 #include "FreeRTOS.h"
+#include "IMU/imu.h"
 #include "IMU/lsm6dso_reg.h"
 #include "IMU/lsm6dsm_reg.h"
 #include "SeesawDriver/Seesaw.h"

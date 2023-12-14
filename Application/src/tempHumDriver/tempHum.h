@@ -4,8 +4,6 @@
 #define SLAVE_ADDRESS 0x70 //Sensor Address
 #define TIMEOUT 1000
 
-extern int global_acc[3];
-extern int global_gyro[3];
 extern int global_temp;
 extern int global_hum;
 

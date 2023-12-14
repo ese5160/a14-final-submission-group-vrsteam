@@ -51,8 +51,8 @@ bool handled = false;
 int prev_temp = 0;
 int global_temp = 0;
 int global_hum = 0;
-int global_acc[3] = {0, 0, 0};
-int global_gyro[3] = {0, 0, 0};
+float global_acc[3] = {0, 0, 0};
+float global_gyro[3] = {0, 0, 0};
 
 char bufferPrint[64];  ///< Buffer for daemon task
 
@@ -191,12 +191,12 @@ static void StartTasks(void)
     //snprintf(bufferPrint, 64, "Heap after starting WIFI: %d\r\n", xPortGetFreeHeapSize());
     //SerialConsoleWriteString(bufferPrint);
 
-    if (xTaskCreate(vUiHandlerTask, "UI Task", UI_TASK_SIZE, NULL, UI_TASK_PRIORITY, &uiTaskHandle) != pdPASS) {
-        SerialConsoleWriteString("ERR: UI task could not be initialized!\r\n");
-    }
+    // if (xTaskCreate(vUiHandlerTask, "UI Task", UI_TASK_SIZE, NULL, UI_TASK_PRIORITY, &uiTaskHandle) != pdPASS) {
+    //     SerialConsoleWriteString("ERR: UI task could not be initialized!\r\n");
+    // }
 
-    snprintf(bufferPrint, 64, "Heap after starting UI Task: %d\r\n", xPortGetFreeHeapSize());
-    SerialConsoleWriteString(bufferPrint);
+    // snprintf(bufferPrint, 64, "Heap after starting UI Task: %d\r\n", xPortGetFreeHeapSize());
+    // SerialConsoleWriteString(bufferPrint);
 
 
     // if (xTaskCreate(vControlHandlerTask, "Control Task", CONTROL_TASK_SIZE, NULL, CONTROL_TASK_PRIORITY, &controlTaskHandle) != pdPASS) {

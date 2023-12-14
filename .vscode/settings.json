@@ -15,6 +15,7 @@
         "seesaw.h": "c",
         "lsm6dso_reg.h": "c",
         "accidenthandler.h": "c",
-        "actuatorhandler.h": "c"
+        "actuatorhandler.h": "c",
+        "imu.h": "c"
     }
 }

@@ -50,7 +50,7 @@ uiStateMachine_state uiState;
 void vUiHandlerTask( void *pvParameters )
 {
 //Do initialization code here
-SerialConsoleWriteString("UI Task Started!");
+SerialConsoleWriteString("UI Task Started!\n");
 uiState = UI_STATE_HANDLE_BUTTONS;
 
 //Here we start the loop for the UI State Machine

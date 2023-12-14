@@ -2503,6 +2503,12 @@
     <Compile Include="src\I2cDriver\I2cDriver.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\IMU\imu.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\IMU\imu.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\IMU\lsm6dsm_reg.c">
       <SubType>compile</SubType>
     </Compile>
