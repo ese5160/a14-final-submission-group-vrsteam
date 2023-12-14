@@ -187,11 +187,11 @@ static void StartTasks(void)
 
     // Initialize Tasks here
 
-    if (xTaskCreate(vWifiTask, "WIFI_TASK", WIFI_TASK_SIZE, NULL, WIFI_PRIORITY, &wifiTaskHandle) != pdPASS) {
-        SerialConsoleWriteString("ERR: WIFI task could not be initialized!\r\n");
-    }
-    snprintf(bufferPrint, 64, "Heap after starting WIFI: %d\r\n", xPortGetFreeHeapSize());
-    SerialConsoleWriteString(bufferPrint);
+    // if (xTaskCreate(vWifiTask, "WIFI_TASK", WIFI_TASK_SIZE, NULL, WIFI_PRIORITY, &wifiTaskHandle) != pdPASS) {
+    //     SerialConsoleWriteString("ERR: WIFI task could not be initialized!\r\n");
+    // }
+    // snprintf(bufferPrint, 64, "Heap after starting WIFI: %d\r\n", xPortGetFreeHeapSize());
+    // SerialConsoleWriteString(bufferPrint);
 
     // if (xTaskCreate(vUiHandlerTask, "UI Task", UI_TASK_SIZE, NULL, UI_TASK_PRIORITY, &uiTaskHandle) != pdPASS) {
     //     SerialConsoleWriteString("ERR: UI task could not be initialized!\r\n");

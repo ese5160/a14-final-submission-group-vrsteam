@@ -6,7 +6,7 @@
 #define GET_HUM_VAL false
 #define GET_ACC_VAL true
 #define GET_ANG_VAL false
-#define CLI_MSG_LEN						8
+#define CLI_MSG_LEN						32
 
 
 extern SemaphoreHandle_t xAccidentDetectedSemaphore;
