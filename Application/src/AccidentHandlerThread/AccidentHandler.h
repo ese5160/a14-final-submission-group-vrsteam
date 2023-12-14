@@ -14,7 +14,8 @@ extern bool handled;
 extern int prev_temp;
 extern float global_acc[3];
 extern float global_gyro[3];
-
+extern int global_acc_value;
+extern int global_gyro_value;
 
 void vAccidentHandlerTask(void *pvParameters);
-bool accidentHappened(int temp, int hum);
+bool accidentHappened(int temp, int hum, int acc, int gyro);

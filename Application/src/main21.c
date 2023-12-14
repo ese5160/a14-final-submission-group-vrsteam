@@ -53,6 +53,8 @@ int global_temp = 0;
 int global_hum = 0;
 float global_acc[3] = {0, 0, 0};
 float global_gyro[3] = {0, 0, 0};
+int global_acc_value;
+int global_gyro_value;
 
 char bufferPrint[64];  ///< Buffer for daemon task
 
@@ -185,11 +187,11 @@ static void StartTasks(void)
 
     // Initialize Tasks here
 
-    //if (xTaskCreate(vWifiTask, "WIFI_TASK", WIFI_TASK_SIZE, NULL, WIFI_PRIORITY, &wifiTaskHandle) != pdPASS) {
-        //SerialConsoleWriteString("ERR: WIFI task could not be initialized!\r\n");
-    //}
-    //snprintf(bufferPrint, 64, "Heap after starting WIFI: %d\r\n", xPortGetFreeHeapSize());
-    //SerialConsoleWriteString(bufferPrint);
+    if (xTaskCreate(vWifiTask, "WIFI_TASK", WIFI_TASK_SIZE, NULL, WIFI_PRIORITY, &wifiTaskHandle) != pdPASS) {
+        SerialConsoleWriteString("ERR: WIFI task could not be initialized!\r\n");
+    }
+    snprintf(bufferPrint, 64, "Heap after starting WIFI: %d\r\n", xPortGetFreeHeapSize());
+    SerialConsoleWriteString(bufferPrint);
 
     // if (xTaskCreate(vUiHandlerTask, "UI Task", UI_TASK_SIZE, NULL, UI_TASK_PRIORITY, &uiTaskHandle) != pdPASS) {
     //     SerialConsoleWriteString("ERR: UI task could not be initialized!\r\n");
