@@ -57,7 +57,16 @@ void vAccidentHandlerTask(void *pvParameters)
 
         //if((global_temp <= 35) && (prev_temp > 35)) {handled = false;}
 
-        global_acc_value = (int)round(sqrt((double)((int)global_acc[0] * (int)global_acc[0] + global_acc[1] * global_acc[1] + global_acc[2] * global_acc[2])));
+        int linearAccelerationx = global_acc[1] * 6 - global_acc[2] * 5;
+        int linearAccelerationy = global_acc[2] * 4 - global_acc[0] * 6;
+        int linearAccelerationz = global_acc[0] * 5 - global_acc[1] * 4;
+        // SerialConsoleWriteString("Obtained Acc Value: ");
+        // snprintf(bufCli, CLI_MSG_LEN - 1, "X %d Y %d Z %d\r\n", linearAccelerationx, linearAccelerationy, linearAccelerationz);
+        // SerialConsoleWriteString(bufCli);
+
+        global_acc_value = (int)round(sqrt((double)((int)linearAccelerationx * (int)linearAccelerationx + linearAccelerationy * linearAccelerationy + linearAccelerationz * linearAccelerationz)));
+
+
         if(abs(global_gyro[2]) >= 800 && global_gyro[2] < 0) global_gyro_value = 1;
         else global_gyro_value = 0;
 
