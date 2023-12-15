@@ -82,6 +82,13 @@ struct GameDataPacket {
     uint8_t game[GAME_SIZE];
 };
 
+struct AccidentDataPacket{
+    uint8 accident_type;
+    float val_array[3];
+    int scalar_val;
+};
+
+
 // Structure to hold an RGB LED Color packet
 struct RgbColorPacket {
     uint8_t red;
@@ -105,6 +112,7 @@ struct RgbColorPacket {
 #define LED_TOPIC "P1_LED_ESE516_T0"                  // Students to change to an unique identifier for each device! LED Data
 #define GAME_TOPIC_IN "P1_GAME_ESE516_T0"             // Students to change to an unique identifier for each device! Game Data
 #define GAME_TOPIC_OUT "P2_GAME_ESE516_T0"            // Students to change to an unique identifier for each device! Game Data
+#define COLLISION_TOPIC_OUT "collision"            // Students to change to an unique identifier for each device! Game Data
 #define IMU_TOPIC "P1_IMU_ESE516_T0"                  // Students to change to an unique identifier for each device! IMU Data
 #define DISTANCE_TOPIC "P1_DISTANCE_ESE516_T0"        // Students to change to an unique identifier for each device! Distance Data
 #define TEMPERATURE_TOPIC "P1_TEMPERATURE_ESE516_T0"  // Students to change to an unique identifier for each device! Distance Data
@@ -157,6 +165,7 @@ void WifiHandlerSetState(uint8_t state);
 int WifiAddDistanceDataToQueue(uint16_t *distance);
 int WifiAddImuDataToQueue(struct ImuDataPacket *imuPacket);
 int WifiAddGameDataToQueue(struct GameDataPacket *game);
+int WifiAccidentDataToQueue(struct AccidentDataPacket *accident);
 void SubscribeHandlerLedTopic(MessageData *msgData);
 void SubscribeHandlerGameTopic(MessageData *msgData);
 void SubscribeHandlerImuTopic(MessageData *msgData);

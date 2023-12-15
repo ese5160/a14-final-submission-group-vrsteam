@@ -1,7 +1,5 @@
 #include "AccidentHandlerThread/AccidentHandler.h"
-#include "SerialConsole.h"
-#include "tempHumDriver/tempHum.h"
-#include "IMU/imu.h"
+
 //#include "CliThread.h"
 
 int counter = 0;
@@ -9,43 +7,43 @@ bool counter_state = true;
 
 static char bufCli[CLI_MSG_LEN];
 
+uint8 cur_accident = 0x0;
+uint8 prev_accident = 0x0;
 
-bool accidentHappened(int temp, int hum, int acc, int gyro){
-    if(temp > 39 || hum > 80 || acc > 130 || gyro == 1) return true;
-    else return false;
+uint8 detectAccident(int temp, int hum, int acc, int gyro){
+    uint8 accident_type = 0x0;
+    if(temp > 39) accident_type |= 0x1;
+    if(hum > 80) accident_type |= 0x2;
+    if(acc > 130) accident_type |= 0x4;
+    if(gyro == 1) accident_type |= 0x8;
+    return accident_type;
 }
 
 void vAccidentHandlerTask(void *pvParameters)
 {
     
     SerialConsoleWriteString("Checking accident state...\r\n");
+
     while(1){
 
         vTaskDelay(50);
 
-        // if(counter >= 100){
-        //     counter_state = false;
-        //     SerialConsoleWriteString("down\r\n");
-        // }
-
-        // if(counter <= 0){
-        //     counter_state = true;
-        //     SerialConsoleWriteString("up\r\n");
-        // }
-
-        // if(counter_state)   counter += 2;
-        // else    counter -= 2;
-        // global_temp = counter;
-
         global_temp = temp_hum_get_val(GET_TEMP_VAL);
-        // SerialConsoleWriteString("Obtained Temperature Value: ");
-        // snprintf(bufCli, CLI_MSG_LEN - 1, "%d\r\n", global_temp);
-        // SerialConsoleWriteString(bufCli);
+        // counter++;
+        // if(counter == 15){
+        //     SerialConsoleWriteString("Obtained Temperature Value: ");
+        //     snprintf(bufCli, CLI_MSG_LEN - 1, "%d\r\n", global_temp);
+        //     SerialConsoleWriteString(bufCli);
+        //     counter = 0;
+        // }
         
         global_hum = temp_hum_get_val(GET_HUM_VAL);
-        // SerialConsoleWriteString("Obtained Humidity Value: ");
-        // snprintf(bufCli, CLI_MSG_LEN - 1, "%d\r\n", global_hum);
-        // SerialConsoleWriteString(bufCli);
+        // if(counter == 15){
+        //     SerialConsoleWriteString("Obtained Humidity Value: ");
+        //     snprintf(bufCli, CLI_MSG_LEN - 1, "%d\r\n", global_hum);
+        //     SerialConsoleWriteString(bufCli);
+        //     counter = 0;
+        // }
 
         acc_ang_get_val(GET_ACC_VAL);
         // SerialConsoleWriteString("Obtained Acc Value: ");
@@ -62,14 +60,39 @@ void vAccidentHandlerTask(void *pvParameters)
         global_acc_value = (int)round(sqrt((double)((int)global_acc[0] * (int)global_acc[0] + global_acc[1] * global_acc[1] + global_acc[2] * global_acc[2])));
         if(abs(global_gyro[2]) >= 800 && global_gyro[2] < 0) global_gyro_value = 1;
         else global_gyro_value = 0;
-        
-        if(accidentHappened(global_temp, global_hum, global_acc_value, global_gyro_value)){
+
+        cur_accident = detectAccident(global_temp, global_hum, global_acc_value, global_gyro_value);
+        prev_accident = detectAccident(prev_temp, prev_hum, prev_acc_value, prev_gyro_value);
+
+        if((prev_accident != 0x0) && (cur_accident == 0x0)){
+            update_pwm_duty_cycle(70, 1);
+            handled = false;
+        }
+
+        prev_temp = global_temp;
+        prev_hum = global_hum;
+        prev_acc_value = global_acc_value;
+        prev_gyro_value = global_gyro_value;
+
+        if(cur_accident != 0x0 && (!handled)){
             //send semaphore
             xSemaphoreGiveFromISR(xAccidentDetectedSemaphore, NULL);
             SerialConsoleWriteString("Accident Detected!\r\n");
+            handled = true;
+
+            // struct AccidentDataPacket accidentvar;
+            // accidentvar.accident_type = 0x1;
+            // accidentvar.scalar_val = 6;
+            // accidentvar.val_array[0] = 7.0;
+            // accidentvar.val_array[1] = 2.0;
+            // accidentvar.val_array[2] = 6.0;
+
+            // int error = WifiAccidentDataToQueue(&accidentvar);
+            // if (error == pdTRUE) {
+            //     SerialConsoleWriteString("Accident Topic Post!\r\n");
+            // }
+
+            // publishAccident("collision", "{\"accident type\":\"collision\", \"values\":[4.0, 2.0, 3.0]}");
         }
-
-
-        prev_temp = global_temp;
     }   
 }

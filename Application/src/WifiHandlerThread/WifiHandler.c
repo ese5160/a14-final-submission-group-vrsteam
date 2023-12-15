@@ -33,6 +33,7 @@ QueueHandle_t xQueueWifiState = NULL;       ///< Queue to determine the Wifi sta
 QueueHandle_t xQueueGameBuffer = NULL;      ///< Queue to send the next play to the cloud
 QueueHandle_t xQueueImuBuffer = NULL;       ///< Queue to send IMU data to the cloud
 QueueHandle_t xQueueDistanceBuffer = NULL;  ///< Queue to send the distance to the cloud
+QueueHandle_t xQueueAccidentBuffer = NULL;
 
 /*HTTP DOWNLOAD RELATED DEFINES AND VARIABLES*/
 
@@ -65,7 +66,7 @@ struct http_client_module http_client_module_inst;
 char mqtt_user[64] = "Unit1";
 
 /* Instance of MQTT service. */
-static struct mqtt_module mqtt_inst;
+struct mqtt_module mqtt_inst;
 
 /* Receive buffer of the MQTT service. */
 static unsigned char mqtt_read_buffer[MAIN_MQTT_BUFFER_SIZE];
@@ -79,6 +80,7 @@ static void MQTT_HandleGameMessages(void);
 static void MQTT_HandleImuMessages(void);
 static void HTTP_DownloadFileInit(void);
 static void HTTP_DownloadFileTransaction(void);
+static void MQTT_HandleAccidentMessages(void);
 /******************************************************************************
  * Callback Functions
  ******************************************************************************/
@@ -936,6 +938,8 @@ static void MQTT_HandleTransactions(void)
     // Check if data has to be sent!
     MQTT_HandleGameMessages();
     MQTT_HandleImuMessages();
+    MQTT_HandleAccidentMessages();
+    
 
     // Handle MQTT messages
     if (mqtt_inst.isConnected) mqtt_yield(&mqtt_inst, 100);
@@ -974,6 +978,32 @@ static void MQTT_HandleGameMessages(void)
         mqtt_publish(&mqtt_inst, GAME_TOPIC_OUT, mqtt_msg, strlen(mqtt_msg), 1, 0);
     }
 }
+
+static void MQTT_HandleAccidentMessages(void)
+{
+    struct AccidentDataPacket accidentPacket;
+    if (pdPASS == xQueueReceive(xQueueAccidentBuffer, &accidentPacket, 0)) {
+        snprintf(mqtt_msg, 63, "{\"accident type\":\"collision\", \"values\":[7.0, 2.0, 3.0]");
+        // for (int iter = 0; iter < GAME_SIZE; iter++) {
+        //     char numGame[5];
+        //     if (gamePacket.game[iter] != 0xFF) {
+        //         snprintf(numGame, 3, "%d", gamePacket.game[iter]);
+        //         strcat(mqtt_msg, numGame);
+        //         if (gamePacket.game[iter + 1] != 0xFF && iter + 1 < GAME_SIZE) {
+        //             snprintf(numGame, 5, ",");
+        //             strcat(mqtt_msg, numGame);
+        //         }
+        //     } else {
+        //         break;
+        //     }
+        // }
+        // strcat(mqtt_msg, "]}");
+        LogMessage(LOG_DEBUG_LVL, mqtt_msg);
+        LogMessage(LOG_DEBUG_LVL, "\r\n");
+        mqtt_publish(&mqtt_inst, COLLISION_TOPIC_OUT, mqtt_msg, strlen(mqtt_msg), 1, 0);
+    }
+}
+
 /**
  * \brief Main application function.
  *
@@ -992,8 +1022,9 @@ void vWifiTask(void *pvParameters)
     xQueueImuBuffer = xQueueCreate(5, sizeof(struct ImuDataPacket));
     xQueueGameBuffer = xQueueCreate(2, sizeof(struct GameDataPacket));
     xQueueDistanceBuffer = xQueueCreate(5, sizeof(uint16_t));
+    xQueueAccidentBuffer = xQueueCreate(5, sizeof(struct AccidentDataPacket));
 
-    if (xQueueWifiState == NULL || xQueueImuBuffer == NULL || xQueueGameBuffer == NULL || xQueueDistanceBuffer == NULL) {
+    if (xQueueWifiState == NULL || xQueueImuBuffer == NULL || xQueueGameBuffer == NULL || xQueueDistanceBuffer == NULL || xQueueAccidentBuffer == NULL) {
         SerialConsoleWriteString("ERROR Initializing Wifi Data queues!\r\n");
     }
 
@@ -1140,5 +1171,11 @@ int WifiAddDistanceDataToQueue(uint16_t *distance)
 int WifiAddGameDataToQueue(struct GameDataPacket *game)
 {
     int error = xQueueSend(xQueueGameBuffer, game, (TickType_t)10);
+    return error;
+}
+
+int WifiAccidentDataToQueue(struct AccidentDataPacket *accident)
+{
+    int error = xQueueSend(xQueueAccidentBuffer, accident, (TickType_t)10);
     return error;
 }

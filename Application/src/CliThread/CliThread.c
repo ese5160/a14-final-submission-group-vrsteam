@@ -566,24 +566,37 @@ BaseType_t CLI_DistanceSensorGetDistance(int8_t *pcWriteBuffer, size_t xWriteBuf
  */
 BaseType_t CLI_SendDummyGameData(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString)
 {
-    struct GameDataPacket gamevar;
+    // struct GameDataPacket gamevar;
 
-    gamevar.game[0] = 0;
-    gamevar.game[1] = 1;
-    gamevar.game[2] = 2;
-    gamevar.game[3] = 3;
-    gamevar.game[4] = 4;
-    gamevar.game[5] = 5;
-    gamevar.game[6] = 6;
-    gamevar.game[7] = 7;
-    gamevar.game[8] = 8;
-    gamevar.game[9] = 9;
-    gamevar.game[10] = 0xFF;
+    // gamevar.game[0] = 0;
+    // gamevar.game[1] = 1;
+    // gamevar.game[2] = 2;
+    // gamevar.game[3] = 3;
+    // gamevar.game[4] = 4;
+    // gamevar.game[5] = 5;
+    // gamevar.game[6] = 6;
+    // gamevar.game[7] = 7;
+    // gamevar.game[8] = 8;
+    // gamevar.game[9] = 9;
+    // gamevar.game[10] = 0xFF;
 
-    int error = WifiAddGameDataToQueue(&gamevar);
+    // int error = WifiAddGameDataToQueue(&gamevar);
+    // if (error == pdTRUE) {
+    //     snprintf((char *) pcWriteBuffer, xWriteBufferLen, "Dummy Game Data MQTT Post\r\n");
+    // }
+
+    struct AccidentDataPacket accidentvar;
+    accidentvar.accident_type = 0x1;
+    accidentvar.scalar_val = 6;
+    accidentvar.val_array[0] = 7.0;
+    accidentvar.val_array[1] = 2.0;
+    accidentvar.val_array[2] = 6.0;
+
+    int error = WifiAccidentDataToQueue(&accidentvar);
     if (error == pdTRUE) {
-        snprintf((char *) pcWriteBuffer, xWriteBufferLen, "Dummy Game Data MQTT Post\r\n");
+        snprintf((char *) pcWriteBuffer, xWriteBufferLen, "Accident Topic Post!\r\n");
     }
+
     return pdFALSE;
 }
 
@@ -651,7 +664,7 @@ BaseType_t CLI_Servo_changePos(int8_t *pcWriteBuffer, size_t xWriteBufferLen, co
 
     configure_tcc();
 
-    update_pwm_duty_cycle(parameterValue, 3);
+    update_pwm_duty_cycle(parameterValue, 1);
 
     SerialConsoleWriteString("pwm duty cycle is changed!\r\n");
 }
