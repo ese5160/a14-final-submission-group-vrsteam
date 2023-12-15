@@ -80,19 +80,50 @@ void vAccidentHandlerTask(void *pvParameters)
             SerialConsoleWriteString("Accident Detected!\r\n");
             handled = true;
 
-            // struct AccidentDataPacket accidentvar;
-            // accidentvar.accident_type = 0x1;
-            // accidentvar.scalar_val = 6;
-            // accidentvar.val_array[0] = 7.0;
-            // accidentvar.val_array[1] = 2.0;
-            // accidentvar.val_array[2] = 6.0;
+            if((cur_accident & 0x1) != 0x0){
+                struct AccidentDataPacket accidentvar;
+                accidentvar.accident_type = "combust";
+                accidentvar.scalar_val = global_temp;
 
-            // int error = WifiAccidentDataToQueue(&accidentvar);
-            // if (error == pdTRUE) {
-            //     SerialConsoleWriteString("Accident Topic Post!\r\n");
-            // }
+                int error = WifiAccidentDataToQueue(&accidentvar);
+                if (error == pdTRUE) {
+                    SerialConsoleWriteString("Combust Topic Post!\r\n");
+                }
+            }
+            if((cur_accident & 0x2) != 0x0){
+                struct AccidentDataPacket accidentvar;
+                accidentvar.accident_type = "flooded";
+                accidentvar.scalar_val = global_hum;
 
-            // publishAccident("collision", "{\"accident type\":\"collision\", \"values\":[4.0, 2.0, 3.0]}");
+                int error = WifiAccidentDataToQueue(&accidentvar);
+                if (error == pdTRUE) {
+                    SerialConsoleWriteString("Flooded Topic Post!\r\n");
+                }
+            }
+            if((cur_accident & 0x4) != 0x0){
+                struct AccidentDataPacket accidentvar;
+                accidentvar.accident_type = "collision";
+                accidentvar.val_array[0] = global_acc[0];
+                accidentvar.val_array[1] = global_acc[1];
+                accidentvar.val_array[2] = global_acc[2];
+
+                int error = WifiAccidentDataToQueue(&accidentvar);
+                if (error == pdTRUE) {
+                    SerialConsoleWriteString("Collision Topic Post!\r\n");
+                }
+            }
+            if((cur_accident & 0x8) != 0x0){
+                struct AccidentDataPacket accidentvar;
+                accidentvar.accident_type = "overturning";
+                accidentvar.val_array[0] = global_gyro[0];
+                accidentvar.val_array[1] = global_gyro[1];
+                accidentvar.val_array[2] = global_gyro[2];
+
+                int error = WifiAccidentDataToQueue(&accidentvar);
+                if (error == pdTRUE) {
+                    SerialConsoleWriteString("Overturning Topic Post!\r\n");
+                }
+            }
         }
     }   
 }

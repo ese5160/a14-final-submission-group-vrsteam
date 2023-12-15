@@ -84,14 +84,6 @@ int main(void)
     // Start FreeRTOS scheduler
     vTaskStartScheduler();
 
-    //struct port_config config_port_pin;
-    //port_get_config_defaults(&config_port_pin);
-    //config_port_pin.direction = PORT_PIN_DIR_OUTPUT_WTH_READBACK;
-    //port_pin_set_config(PIN_PB02, &config_port_pin);
-    //port_pin_set_output_level(PIN_PB02, PORT_PIN_PULL_UP);
-	//bool pin_state = port_pin_get_output_level(PIN_PB02);
-
-
     return 0;  // Will not get here
 }
 
@@ -190,11 +182,11 @@ static void StartTasks(void)
 
     //Initialize Tasks here
 
-    // if (xTaskCreate(vWifiTask, "WIFI_TASK", WIFI_TASK_SIZE, NULL, WIFI_PRIORITY, &wifiTaskHandle) != pdPASS) {
-    //     SerialConsoleWriteString("ERR: WIFI task could not be initialized!\r\n");
-    // }
-    // snprintf(bufferPrint, 64, "Heap after starting WIFI: %d\r\n", xPortGetFreeHeapSize());
-    // SerialConsoleWriteString(bufferPrint);
+    if (xTaskCreate(vWifiTask, "WIFI_TASK", WIFI_TASK_SIZE, NULL, WIFI_PRIORITY, &wifiTaskHandle) != pdPASS) {
+        SerialConsoleWriteString("ERR: WIFI task could not be initialized!\r\n");
+    }
+    snprintf(bufferPrint, 64, "Heap after starting WIFI: %d\r\n", xPortGetFreeHeapSize());
+    SerialConsoleWriteString(bufferPrint);
 
     // if (xTaskCreate(vUiHandlerTask, "UI Task", UI_TASK_SIZE, NULL, UI_TASK_PRIORITY, &uiTaskHandle) != pdPASS) {
     //     SerialConsoleWriteString("ERR: UI task could not be initialized!\r\n");

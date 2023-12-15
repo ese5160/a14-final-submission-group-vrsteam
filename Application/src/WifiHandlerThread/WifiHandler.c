@@ -983,7 +983,7 @@ static void MQTT_HandleAccidentMessages(void)
 {
     struct AccidentDataPacket accidentPacket;
     if (pdPASS == xQueueReceive(xQueueAccidentBuffer, &accidentPacket, 0)) {
-        snprintf(mqtt_msg, 63, "{\"accident type\":\"collision\", \"values\":[7.0, 2.0, 3.0]");
+        snprintf(mqtt_msg, 63, "{\"accident type\":\"collision\", \"values\":[7.0, 2.0, 3.0]}");
         // for (int iter = 0; iter < GAME_SIZE; iter++) {
         //     char numGame[5];
         //     if (gamePacket.game[iter] != 0xFF) {

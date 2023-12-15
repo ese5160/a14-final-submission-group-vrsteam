@@ -39,9 +39,9 @@ extern "C" {
 /** Wi-Fi AP Settings. */
 // Note: you can register your WiFi PCBAs with AirPennNet-Device and use the credentials below to connect to the internet:
 // https://device.upenn.edu/
-#define MAIN_WLAN_SSID "AirPennNet-Device"  /**< Destination SSID. Change to your WIFI SSID */
+#define MAIN_WLAN_SSID "Detkin IOT North"  /**< Destination SSID. Change to your WIFI SSID */
 #define MAIN_WLAN_AUTH M2M_WIFI_SEC_WPA_PSK /**< Security manner */
-#define MAIN_WLAN_PSK "penn1740wifi"        /**< Password for Destination SSID. Change to your password. Please dont hack my WiFi router */
+#define MAIN_WLAN_PSK "n0rthC0untry"        /**< Password for Destination SSID. Change to your password. Please dont hack my WiFi router */
 
 /** IP address parsing. */
 #define IPV4_BYTE(val, index) ((val >> (index * 8)) & 0xFF)
@@ -83,7 +83,7 @@ struct GameDataPacket {
 };
 
 struct AccidentDataPacket{
-    uint8 accident_type;
+    char* accident_type;
     float val_array[3];
     int scalar_val;
 };
@@ -113,6 +113,9 @@ struct RgbColorPacket {
 #define GAME_TOPIC_IN "P1_GAME_ESE516_T0"             // Students to change to an unique identifier for each device! Game Data
 #define GAME_TOPIC_OUT "P2_GAME_ESE516_T0"            // Students to change to an unique identifier for each device! Game Data
 #define COLLISION_TOPIC_OUT "collision"            // Students to change to an unique identifier for each device! Game Data
+#define OVERTURN_TOPIC_OUT "overturning"            // Students to change to an unique identifier for each device! Game Data
+#define COMBUST_TOPIC_OUT "combust"            // Students to change to an unique identifier for each device! Game Data
+#define FLOODED_TOPIC_OUT "flooded"            // Students to change to an unique identifier for each device! Game Data
 #define IMU_TOPIC "P1_IMU_ESE516_T0"                  // Students to change to an unique identifier for each device! IMU Data
 #define DISTANCE_TOPIC "P1_DISTANCE_ESE516_T0"        // Students to change to an unique identifier for each device! Distance Data
 #define TEMPERATURE_TOPIC "P1_TEMPERATURE_ESE516_T0"  // Students to change to an unique identifier for each device! Distance Data
@@ -132,10 +135,10 @@ struct RgbColorPacket {
 #define LED_TOPIC_LED_ON "true"
 
 // Cloud MQTT User
-#define CLOUDMQTT_USER_ID "rttyobej"
+#define CLOUDMQTT_USER_ID "vrsteam"
 
 // Cloud MQTT PASSWORD
-#define CLOUDMQTT_USER_PASSWORD "BrsJBNVoQBl7"
+#define CLOUDMQTT_USER_PASSWORD "ESE5160vrsteam"
 
 #define CLOUDMQTT_PORT 1883
 
