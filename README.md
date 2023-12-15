@@ -23,25 +23,26 @@ Runlong Hu, Yijie Ding
 </p>
 
 ## Inspiration
-The inspiration for designing this wearable IoT smartwatch comes from the growing need to support the aging population and address their safety concerns. With an increasing number of elderly people living alone or without regular caregivers, it becomes imperative to ensure their safety and well-being. So we create a device that can track their physical activity, monitor vital signs, and provide emergency assistance in case of falls or accidents.
+Our inspiration for the project came from the need for a reliable and effective solution for vehicle rescue in case of accidents. Every year, millions of people lose their lives or suffer injuries due to car accidents. We wanted to develop a product that could help save the driver’s life by detecting and responding to these situations automatically and promptly. With the advancement of IoT and edge computing, we were able to leverage the power of embedded systems and sensors to create a vehicle rescue system that can sense collision, overturning, fire, and wading, and activate appropriate countermeasures, such as spraying water to extinguish the fire and opening the sunproof for escape. Our system can also communicate with a remote vehicle rescue center via the Internet, and send the accident information and location, so that the driver can get help as soon as possible. Our goal with this project is to make vehicle rescue more efficient and effective, while also reducing the risk of fatalities and injuries. 
 
 ## What it does 
-This wearable IoT smartwatch can monitor temperature and health information including heart rate and blood oxygen saturation. An alarm will be sent to the terminal if any abnormal data is detected. Also, If the user accidentally falls, the watch can also detect by using an accelerometer, and send an alarm. The smartwatch can receive messages from the terminal and display them on the screen, allowing communication between the elderly and their children. All the functions can be used through CLI commands or buttons on the watch.
+Our inspiration for the project came from the need for a reliable and effective solution for vehicle rescue in case of accidents. Every year, millions of people lose their lives or suffer injuries due to car accidents. We wanted to develop a product that could help save the driver’s life by detecting and responding to these situations automatically and promptly. With the advancement of IoT and edge computing, we were able to leverage the power of embedded systems and sensors to create a vehicle rescue system that can sense collision, overturning, fire, and wading, and activate appropriate countermeasures, such as spraying water to extinguish the fire and opening the sunproof for escape. Our system can also communicate with a remote vehicle rescue center via the Internet, and send the accident information and location, so that the driver can get help as soon as possible. Our goal with this project is to make vehicle rescue more efficient and effective, while also reducing the risk of fatalities and injuries. 
 
 ## How we built it
-1. Firstly, we determined the functionalities of this watch and selected suitable chips to realize them. 
-2. Then we designed a compact PCB which holds all the sensors to make our device wearable and occupy a small space. 
-3. After this PCB was manufactured, we wrote the drivers for the sensors and screens. 
-4. Algorithms for sensors were also designed and the function of communicating between the terminal and the watch was added. 
+1. Firstly, we determined the functionalities of the vehicle rescue system and selected suitable chips to realize them. 
+2. Then we designed a compact PCB which holds accelerometer, gyroscope, temperature & humidity sensor, GPS, and servo to make our device mountable and occupy a small space. 
+3. After this PCB was manufactured, we wrote the drivers for the sensors and actuators. 
+4. Algorithms for sensors were also designed and the function of communicating with the terminal and the cloud server. 
 5. Finally,  we conducted the complete test and all functionalities worked well.
 
 ## Challenges we ran into
 ### Hardware:
-- The power regulator did not work correctly initially. We found that the regulator chip is a constant output chip and no additional resistors are needed to balance the output voltage. So we removed the redundant resistors and this made the regulator work correctly.
+- We assigned PA24 as the pin muxed to WO2 of TCC1 to generate PWM signal at the beginning according to the datasheet. However, it doesn't work on our board. We first tried to generate PWM signal on SAMW25 Xplain Pro dev board to ensure our program is fully correct. Then we experimented on our own board and found we can successfully generate PWM signal using pin PA17 and muxing it to WO2 of TCC2. Finally, we attached a jumper from the testpoint of PA17 to the connector and managed to control the servo.
 
 ### Software:
-- The data got from the heart rate click is not readable data of heart rate and blood oxygen saturation. This sensor measures the light reflected by the finger, which changes along with the heartbeat. The reflected light signal is noisy and it is challenging to convert the raw data to heart rate and blood oxygen saturation. We designed an algorithm that can smooth the raw data and count the number of peaks in the light signal to make the sensor work.
-- The SPI communication utilized in the ST7735 screen driver is relatively slow, resulting in a low screen refresh rate. To address this issue, the DMA method is implemented in SPI communication, allowing direct data reading from the main memory and subsequently enhancing the screen's refresh rate.
+- The handler of accidents were repeatedly triggered when an accident was detected, resulting in redundant computation and server access. We added a flag to make the handler triggered only once in the case of an accident. The flag is set to block generating the request after the an semaphore is issued, and is reset when the accident is actually handled.
+
+- The synchronization of our program doesn't work fine in the beginning. As a result, the command line often got stuck, and mqtt broker cannot be connected sometimes. We carefully ajusted the priority of each thread, and tuned the suspension period of each task to solve this issue.
 
 ## Accomplishments that we're proud of
 - Designed a wearable IoT smartwatch, which is able to detect temperature, health information, and accidents. 
