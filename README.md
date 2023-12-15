@@ -45,25 +45,27 @@ Our inspiration for the project came from the need for a reliable and effective 
 - The synchronization of our program doesn't work fine in the beginning. As a result, the command line often got stuck, and mqtt broker cannot be connected sometimes. We carefully ajusted the priority of each thread, and tuned the suspension period of each task to solve this issue.
 
 ## Accomplishments that we're proud of
-- Designed a wearable IoT smartwatch, which is able to detect temperature, health information, and accidents. 
-- Implemented the communication between the watch and the terminal. 
-- Developed I2C driver and SPI driver interface for sensors and actuators. 
-- Developed the algorithm of heart rate click (max30102).
-- Brought up PCB by detecting and overcoming several hardware issues. 
+- Designed a vehicle rescue system that can detect combust, flooding, collision and overturning, as well as a gps location.
+- Designed our own PCBA which works perfectly fine, including the battery system and peripherals.
+- Developed the UI page which reflects real time information from the sensors and the severity of the situation.
+- Implemented the connection between the system and the cloud.
+- Built a model with high integration of our PCBA, actuators and the casework.
 
 ## What we learned 
-- Designing PCBA while adhering to guidelines to ensure proper functionality.
-- Getting familiar with communication protocols such as SPI, UART, I2C etc.
-- Understanding the working principles of FreeRTOS and implementing it in our project.
-- Transferring and receiving data via MQTT and displaying information on a dashboard using Node-RED.
-- Developing a program to download files from the internet, ultimately realizing OTAFU on our smartwatch.
-
-In summary, we gained valuable skills in PCB design and coding for unfamiliar devices. Our ability to pinpoint the sources of issues has also improved. Hardware design problems can sometimes be unpredictable, but with systematic testing and patience, we can successfully identify and resolve the underlying causes.
+- The process of having an idea to bringing the project to life ultimately and how to deal with every step of it.
+- Designing PCBA and choosing parts according to power assumptions and functionality.
+- How to build the communications using FreeRtos and CLI.
+- How to connect our board to cloud and design our UI using Node-RED.
+- Multiple communication protocols and how to implement them in our sensors and actuators.
+- Techniques to display our project to the audience with pics and videos and emphasizing our highlights.
+- The beauty of IoT.
 
 ## What's next for ESE516 IoT Smart Watch Prototype
-- Make the interface more user-friendly. Bigger font and simpler operation will be realized for the elderly.
-- Implement sensors get into hibernation mode when not used in order to make the battery last longer. The code logic and algorithms can also be improved to make the detection quicker and more accurate.
-- Develop the GPS function on the board and improve its working performance.
+- Improve the actuators, associated with PWM.
+- Improve our casework and mechanical connections.
+- Develop a control interface.
+- Improve the gps accuracy and other performances.
+- Test our system in real vehicles.
 
 ## Link to our Node-RED demo URL
-[link](https://pleasant-whinchat-5522.flowforge.cloud/ui/#!/0?socketid=mXLtKAlgD6xP0WeeAAFP)
+[link](https://urldefense.com/v3/__http://20.102.85.166:1880/ui/*!/2?socketid=2aQrE-XEIavbcpYjAAAB__;Iw!!IBzWLUs!SQBM2Ocf-4c6Tx-cR8XIjrAddaftF89aK1PXuFJ0L9vQYlaqKbhOuqs6xS7pKp9lN79EsX_AWTW2lYEGT9__uGYo$)
