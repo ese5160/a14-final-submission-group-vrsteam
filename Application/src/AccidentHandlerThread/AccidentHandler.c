@@ -12,7 +12,7 @@ uint8 prev_accident = 0x0;
 
 uint8 detectAccident(int temp, int hum, int acc, int gyro){
     uint8 accident_type = 0x0;
-    if(temp > 39) accident_type |= 0x1;
+    if(temp > 50) accident_type |= 0x1;
     if(hum > 80) accident_type |= 0x2;
     if(acc > 130) accident_type |= 0x4;
     if(gyro == 1) accident_type |= 0x8;
@@ -26,7 +26,7 @@ void vAccidentHandlerTask(void *pvParameters)
 
     while(1){
 
-        vTaskDelay(50);
+        vTaskDelay(100);
 
         global_temp = temp_hum_get_val(GET_TEMP_VAL);
         // counter++;
@@ -82,7 +82,7 @@ void vAccidentHandlerTask(void *pvParameters)
 
             if((cur_accident & 0x1) != 0x0){
                 struct AccidentDataPacket accidentvar;
-                accidentvar.accident_type = "combust";
+                accidentvar.accident_type = (cur_accident & 0x1);
                 accidentvar.scalar_val = global_temp;
 
                 int error = WifiAccidentDataToQueue(&accidentvar);
@@ -92,7 +92,7 @@ void vAccidentHandlerTask(void *pvParameters)
             }
             if((cur_accident & 0x2) != 0x0){
                 struct AccidentDataPacket accidentvar;
-                accidentvar.accident_type = "flooded";
+                accidentvar.accident_type = (cur_accident & 0x2);
                 accidentvar.scalar_val = global_hum;
 
                 int error = WifiAccidentDataToQueue(&accidentvar);
@@ -102,7 +102,7 @@ void vAccidentHandlerTask(void *pvParameters)
             }
             if((cur_accident & 0x4) != 0x0){
                 struct AccidentDataPacket accidentvar;
-                accidentvar.accident_type = "collision";
+                accidentvar.accident_type = (cur_accident & 0x4);
                 accidentvar.val_array[0] = global_acc[0];
                 accidentvar.val_array[1] = global_acc[1];
                 accidentvar.val_array[2] = global_acc[2];
@@ -114,7 +114,7 @@ void vAccidentHandlerTask(void *pvParameters)
             }
             if((cur_accident & 0x8) != 0x0){
                 struct AccidentDataPacket accidentvar;
-                accidentvar.accident_type = "overturning";
+                accidentvar.accident_type = (cur_accident & 0x8);
                 accidentvar.val_array[0] = global_gyro[0];
                 accidentvar.val_array[1] = global_gyro[1];
                 accidentvar.val_array[2] = global_gyro[2];

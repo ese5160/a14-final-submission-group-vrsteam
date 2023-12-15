@@ -34,7 +34,7 @@ extern "C" {
 #define WIFI_DOWNLOAD_HANDLE 3  ///< State for Wifi handler to Handle Download Connection
 
 #define WIFI_TASK_SIZE 1000
-#define WIFI_PRIORITY (configMAX_PRIORITIES - 2)
+#define WIFI_PRIORITY (configMAX_PRIORITIES - 1)
 
 /** Wi-Fi AP Settings. */
 // Note: you can register your WiFi PCBAs with AirPennNet-Device and use the credentials below to connect to the internet:
@@ -83,7 +83,7 @@ struct GameDataPacket {
 };
 
 struct AccidentDataPacket{
-    char* accident_type;
+    uint8 accident_type;
     float val_array[3];
     int scalar_val;
 };

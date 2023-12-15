@@ -983,24 +983,70 @@ static void MQTT_HandleAccidentMessages(void)
 {
     struct AccidentDataPacket accidentPacket;
     if (pdPASS == xQueueReceive(xQueueAccidentBuffer, &accidentPacket, 0)) {
-        snprintf(mqtt_msg, 63, "{\"accident type\":\"collision\", \"values\":[7.0, 2.0, 3.0]}");
-        // for (int iter = 0; iter < GAME_SIZE; iter++) {
-        //     char numGame[5];
-        //     if (gamePacket.game[iter] != 0xFF) {
-        //         snprintf(numGame, 3, "%d", gamePacket.game[iter]);
-        //         strcat(mqtt_msg, numGame);
-        //         if (gamePacket.game[iter + 1] != 0xFF && iter + 1 < GAME_SIZE) {
-        //             snprintf(numGame, 5, ",");
-        //             strcat(mqtt_msg, numGame);
-        //         }
-        //     } else {
-        //         break;
-        //     }
-        // }
-        // strcat(mqtt_msg, "]}");
-        LogMessage(LOG_DEBUG_LVL, mqtt_msg);
-        LogMessage(LOG_DEBUG_LVL, "\r\n");
-        mqtt_publish(&mqtt_inst, COLLISION_TOPIC_OUT, mqtt_msg, strlen(mqtt_msg), 1, 0);
+
+        switch (accidentPacket.accident_type)
+        {
+        case 0x1:{
+            snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"accident type\":\"combust\", \"values\":%d }", 60);
+            LogMessage(LOG_DEBUG_LVL, mqtt_msg);
+            LogMessage(LOG_DEBUG_LVL, "\r\n");
+            mqtt_publish(&mqtt_inst, COMBUST_TOPIC_OUT, mqtt_msg, strlen(mqtt_msg), 1, 0);
+            break;
+        }
+
+        case 0x2:{
+            snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"accident type\":\"flooded\", \"values\":%d }", 60);
+            LogMessage(LOG_DEBUG_LVL, mqtt_msg);
+            LogMessage(LOG_DEBUG_LVL, "\r\n");
+            mqtt_publish(&mqtt_inst, FLOODED_TOPIC_OUT, mqtt_msg, strlen(mqtt_msg), 1, 0);
+            break;
+        }
+
+        case 0x4:{
+            snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"accident type\":\"collision\", \"values\":[");
+            char temp_str[2];  // Temporary string for number conversion
+
+            // Loop through the array and append each element to the message
+            for (int i = 0; i < 3; i++) {
+                snprintf(temp_str, sizeof(temp_str), "%d", 5);
+                strcat(mqtt_msg, temp_str);
+                if (i < 2) {
+                    strcat(mqtt_msg, ", ");
+                }
+            }
+
+            strcat(mqtt_msg, "]}");
+
+            LogMessage(LOG_DEBUG_LVL, mqtt_msg);
+            LogMessage(LOG_DEBUG_LVL, "\r\n");
+            mqtt_publish(&mqtt_inst, COLLISION_TOPIC_OUT, mqtt_msg, strlen(mqtt_msg), 1, 0);
+            break;
+        }
+
+        case 0x8:{
+            snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"accident type\":\"overturning\", \"values\":[");
+            char temp_str[2];  // Temporary string for number conversion
+
+            // Loop through the array and append each element to the message
+            for (int i = 0; i < 3; i++) {
+                snprintf(temp_str, sizeof(temp_str), "%d", 5);
+                strcat(mqtt_msg, temp_str);
+                if (i < 2) {
+                    strcat(mqtt_msg, ", ");
+                }
+            }
+
+            strcat(mqtt_msg, "]}");
+
+            LogMessage(LOG_DEBUG_LVL, mqtt_msg);
+            LogMessage(LOG_DEBUG_LVL, "\r\n");
+            mqtt_publish(&mqtt_inst, COLLISION_TOPIC_OUT, mqtt_msg, strlen(mqtt_msg), 1, 0);
+            break;
+        }
+        
+        default:
+            break;
+        }
     }
 }
 
@@ -1117,7 +1163,7 @@ void vWifiTask(void *pvParameters)
             isPressed = false;
         }
 
-        vTaskDelay(100);
+        vTaskDelay(1000);
     }
     return;
 }
