@@ -987,7 +987,7 @@ static void MQTT_HandleAccidentMessages(void)
         switch (accidentPacket.accident_type)
         {
         case 0x1:{
-            snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"accident type\":\"combust\", \"values\":%d }", 60);
+            snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"accident type\":\"combust\", \"values\":%d, \"location\": [39.9, 75.2]}", 60);
             LogMessage(LOG_DEBUG_LVL, mqtt_msg);
             LogMessage(LOG_DEBUG_LVL, "\r\n");
             mqtt_publish(&mqtt_inst, COMBUST_TOPIC_OUT, mqtt_msg, strlen(mqtt_msg), 1, 0);
@@ -995,7 +995,7 @@ static void MQTT_HandleAccidentMessages(void)
         }
 
         case 0x2:{
-            snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"accident type\":\"flooded\", \"values\":%d }", 60);
+            snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"accident type\":\"flooded\", \"values\":%d, \"location\": [39.9, 75.2]}", 60);
             LogMessage(LOG_DEBUG_LVL, mqtt_msg);
             LogMessage(LOG_DEBUG_LVL, "\r\n");
             mqtt_publish(&mqtt_inst, FLOODED_TOPIC_OUT, mqtt_msg, strlen(mqtt_msg), 1, 0);
@@ -1015,7 +1015,7 @@ static void MQTT_HandleAccidentMessages(void)
                 }
             }
 
-            strcat(mqtt_msg, "]}");
+            strcat(mqtt_msg, "], \"location\": [39.9, 75.2]}");
 
             LogMessage(LOG_DEBUG_LVL, mqtt_msg);
             LogMessage(LOG_DEBUG_LVL, "\r\n");
@@ -1036,7 +1036,7 @@ static void MQTT_HandleAccidentMessages(void)
                 }
             }
 
-            strcat(mqtt_msg, "]}");
+            strcat(mqtt_msg, "], \"location\": [39.9, 75.2]}");
 
             LogMessage(LOG_DEBUG_LVL, mqtt_msg);
             LogMessage(LOG_DEBUG_LVL, "\r\n");
