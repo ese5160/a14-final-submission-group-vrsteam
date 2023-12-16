@@ -12,7 +12,7 @@ uint8 prev_accident = 0x0;
 
 uint8 detectAccident(int temp, int hum, int acc, int gyro){
     uint8 accident_type = 0x0;
-    if(temp > 38) accident_type |= 0x1;
+    if(temp > 40) accident_type |= 0x1;
     if(hum > 80) accident_type |= 0x2;
     if(acc > 130) accident_type |= 0x4;
     if(gyro == 1) accident_type |= 0x8;
@@ -29,7 +29,7 @@ void vAccidentHandlerTask(void *pvParameters)
         vTaskDelay(100);
 
         global_temp = temp_hum_get_val(GET_TEMP_VAL);
-        // counter++;
+        counter++;
         // if(counter == 15){
         //     SerialConsoleWriteString("Obtained Temperature Value: ");
         //     snprintf(bufCli, CLI_MSG_LEN - 1, "%d\r\n", global_temp);
