@@ -12,7 +12,7 @@ uint8 prev_accident = 0x0;
 
 uint8 detectAccident(int temp, int hum, int acc, int gyro){
     uint8 accident_type = 0x0;
-    if(temp > 40) accident_type |= 0x1;
+    if(temp > 38) accident_type |= 0x1;
     if(hum > 80) accident_type |= 0x2;
     if(acc > 130) accident_type |= 0x4;
     if(gyro == 1) accident_type |= 0x8;
@@ -112,9 +112,9 @@ void vAccidentHandlerTask(void *pvParameters)
             if((cur_accident & 0x4) != 0x0){
                 struct AccidentDataPacket accidentvar;
                 accidentvar.accident_type = (cur_accident & 0x4);
-                accidentvar.val_array[0] = global_acc[0];
-                accidentvar.val_array[1] = global_acc[1];
-                accidentvar.val_array[2] = global_acc[2];
+                accidentvar.val_array[0] = abs(linearAccelerationx);
+                accidentvar.val_array[1] = abs(linearAccelerationy);
+                accidentvar.val_array[2] = abs(linearAccelerationz);
 
                 int error = WifiAccidentDataToQueue(&accidentvar);
                 if (error == pdTRUE) {

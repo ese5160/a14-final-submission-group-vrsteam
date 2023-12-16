@@ -84,7 +84,7 @@ struct GameDataPacket {
 
 struct AccidentDataPacket{
     uint8 accident_type;
-    float val_array[3];
+    int val_array[3];
     int scalar_val;
 };
 

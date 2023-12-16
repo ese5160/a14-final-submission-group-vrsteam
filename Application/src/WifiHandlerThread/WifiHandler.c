@@ -24,8 +24,8 @@
 /******************************************************************************
  * Variables
  ******************************************************************************/
-volatile char mqtt_msg[64] = "{\"d\":{\"temp\":17}}\"";
-volatile char mqtt_msg_temp[64] = "{\"d\":{\"temp\":17}}\"";
+volatile char mqtt_msg[128] = "{\"d\":{\"temp\":17}}\"";
+volatile char mqtt_msg_temp[128] = "{\"d\":{\"temp\":17}}\"";
 
 volatile uint32_t temperature = 1;
 int8_t wifiStateMachine = WIFI_MQTT_INIT;   ///< Global variable that determines the state of the WIFI handler.
@@ -995,7 +995,7 @@ static void MQTT_HandleAccidentMessages(void)
         }
 
         case 0x2:{
-            snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"accident type\":\"flooded\", \"values\":%d, \"location\": [39.9, 75.2]}", 60);
+            snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"accident type\":\"flooded\", \"values\":%d, \"location\": [39.9, 75.2]}", 95);
             LogMessage(LOG_DEBUG_LVL, mqtt_msg);
             LogMessage(LOG_DEBUG_LVL, "\r\n");
             mqtt_publish(&mqtt_inst, FLOODED_TOPIC_OUT, mqtt_msg, strlen(mqtt_msg), 1, 0);
@@ -1004,11 +1004,11 @@ static void MQTT_HandleAccidentMessages(void)
 
         case 0x4:{
             snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"accident type\":\"collision\", \"values\":[");
-            char temp_str[2];  // Temporary string for number conversion
+            char temp_str[5];  // Temporary string for number conversion
 
             // Loop through the array and append each element to the message
             for (int i = 0; i < 3; i++) {
-                snprintf(temp_str, sizeof(temp_str), "%d", 5);
+                snprintf(temp_str, sizeof(temp_str), "%d", accidentPacket.val_array[i]);
                 strcat(mqtt_msg, temp_str);
                 if (i < 2) {
                     strcat(mqtt_msg, ", ");
@@ -1025,11 +1025,11 @@ static void MQTT_HandleAccidentMessages(void)
 
         case 0x8:{
             snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"accident type\":\"overturning\", \"values\":[");
-            char temp_str[2];  // Temporary string for number conversion
+            char temp_str[5];  // Temporary string for number conversion
 
             // Loop through the array and append each element to the message
             for (int i = 0; i < 3; i++) {
-                snprintf(temp_str, sizeof(temp_str), "%d", 5);
+                snprintf(temp_str, sizeof(temp_str), "%d", 6);
                 strcat(mqtt_msg, temp_str);
                 if (i < 2) {
                     strcat(mqtt_msg, ", ");
