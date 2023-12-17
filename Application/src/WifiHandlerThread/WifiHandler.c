@@ -1025,11 +1025,11 @@ static void MQTT_HandleAccidentMessages(void)
 
         case 0x8:{
             snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"accident type\":\"overturning\", \"values\":[");
-            char temp_str[5];  // Temporary string for number conversion
+            char temp_str[20];  // Temporary string for number conversion
 
             // Loop through the array and append each element to the message
             for (int i = 0; i < 3; i++) {
-                snprintf(temp_str, sizeof(temp_str), "%d", 6);
+                snprintf(temp_str, sizeof(temp_str), "%d", 600);
                 strcat(mqtt_msg, temp_str);
                 if (i < 2) {
                     strcat(mqtt_msg, ", ");

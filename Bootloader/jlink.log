@@ -1,9 +1,9 @@
-T6B54 836:156.298   SEGGER J-Link V7.94a Log File
-T6B54 836:156.362   DLL Compiled: Dec  6 2023 16:01:39
-T6B54 836:156.376   Logging started @ 2023-12-16 21:47
-T6B54 836:156.387   Process: C:\Program Files (x86)\Atmel\Studio\7.0\atbackend\atbackend.exe
-T6B54 836:156.399 - 54.954ms
-T6B54 836:163.793 JLINK_Close()
-T6B54 836:175.845 - 12.051ms
-T6B54 836:175.878   
-T6B54 836:175.889   Closed
+T6B54 12776:671.661   SEGGER J-Link V7.94a Log File
+T6B54 12776:671.738   DLL Compiled: Dec  6 2023 16:01:39
+T6B54 12776:671.751   Logging started @ 2023-12-17 01:06
+T6B54 12776:671.762   Process: C:\Program Files (x86)\Atmel\Studio\7.0\atbackend\atbackend.exe
+T6B54 12776:671.774 - 62.818ms
+T6B54 12776:678.313 JLINK_Close()
+T6B54 12776:681.490 - 3.176ms
+T6B54 12776:681.515   
+T6B54 12776:681.527   Closed
