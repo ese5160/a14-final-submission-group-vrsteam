@@ -12,7 +12,7 @@ uint8 prev_accident = 0x0;
 
 uint8 detectAccident(int temp, int hum, int acc, int gyro){
     uint8 accident_type = 0x0;
-    if(temp > 33) accident_type |= 0x1;
+    if(temp > 41) accident_type |= 0x1;
     if(hum > 50) accident_type |= 0x2;
     if(acc > 130) accident_type |= 0x4;
     if(gyro == 1) accident_type |= 0x8;
