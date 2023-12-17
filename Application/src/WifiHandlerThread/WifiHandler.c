@@ -987,7 +987,7 @@ static void MQTT_HandleAccidentMessages(void)
         switch (accidentPacket.accident_type)
         {
         case 0x1:{
-            snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"accident type\":\"combust\", \"values\":%d, \"location\": [39.9, 75.2]}", 60);
+            snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"tp\":\"f\", \"val\":%d, \"loc\": [39.9, 75.2]}", accidentPacket.scalar_val);
             LogMessage(LOG_DEBUG_LVL, mqtt_msg);
             LogMessage(LOG_DEBUG_LVL, "\r\n");
             mqtt_publish(&mqtt_inst, COMBUST_TOPIC_OUT, mqtt_msg, strlen(mqtt_msg), 1, 0);
@@ -995,7 +995,7 @@ static void MQTT_HandleAccidentMessages(void)
         }
 
         case 0x2:{
-            snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"accident type\":\"flooded\", \"values\":%d, \"location\": [39.9, 75.2]}", 95);
+            snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"tp\":\"w\", \"val\":%d, \"loc\": [39.9, 75.2]}", accidentPacket.scalar_val);
             LogMessage(LOG_DEBUG_LVL, mqtt_msg);
             LogMessage(LOG_DEBUG_LVL, "\r\n");
             mqtt_publish(&mqtt_inst, FLOODED_TOPIC_OUT, mqtt_msg, strlen(mqtt_msg), 1, 0);
@@ -1003,7 +1003,7 @@ static void MQTT_HandleAccidentMessages(void)
         }
 
         case 0x4:{
-            snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"accident type\":\"collision\", \"values\":[");
+            snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"tp\":\"c\", \"val\":[");
             char temp_str[5];  // Temporary string for number conversion
 
             // Loop through the array and append each element to the message
@@ -1015,7 +1015,7 @@ static void MQTT_HandleAccidentMessages(void)
                 }
             }
 
-            strcat(mqtt_msg, "], \"location\": [39.9, 75.2]}");
+            strcat(mqtt_msg, "], \"loc\": [39.9, 75.2]}");
 
             LogMessage(LOG_DEBUG_LVL, mqtt_msg);
             LogMessage(LOG_DEBUG_LVL, "\r\n");
@@ -1024,19 +1024,19 @@ static void MQTT_HandleAccidentMessages(void)
         }
 
         case 0x8:{
-            snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"accident type\":\"overturning\", \"values\":[");
+            snprintf(mqtt_msg, sizeof(mqtt_msg), "{\"tp\":\"o\", \"val\":[");
             char temp_str[20];  // Temporary string for number conversion
 
             // Loop through the array and append each element to the message
             for (int i = 0; i < 3; i++) {
-                snprintf(temp_str, sizeof(temp_str), "%d", 600);
+                snprintf(temp_str, sizeof(temp_str), "%d", accidentPacket.val_array[i]);
                 strcat(mqtt_msg, temp_str);
                 if (i < 2) {
                     strcat(mqtt_msg, ", ");
                 }
             }
 
-            strcat(mqtt_msg, "], \"location\": [39.9, 75.2]}");
+            strcat(mqtt_msg, "], \"loc\": [39.9, 75.2]}");
 
             LogMessage(LOG_DEBUG_LVL, mqtt_msg);
             LogMessage(LOG_DEBUG_LVL, "\r\n");
@@ -1068,7 +1068,7 @@ void vWifiTask(void *pvParameters)
     xQueueImuBuffer = xQueueCreate(5, sizeof(struct ImuDataPacket));
     xQueueGameBuffer = xQueueCreate(2, sizeof(struct GameDataPacket));
     xQueueDistanceBuffer = xQueueCreate(5, sizeof(uint16_t));
-    xQueueAccidentBuffer = xQueueCreate(5, sizeof(struct AccidentDataPacket));
+    xQueueAccidentBuffer = xQueueCreate(20, sizeof(struct AccidentDataPacket));
 
     if (xQueueWifiState == NULL || xQueueImuBuffer == NULL || xQueueGameBuffer == NULL || xQueueDistanceBuffer == NULL || xQueueAccidentBuffer == NULL) {
         SerialConsoleWriteString("ERROR Initializing Wifi Data queues!\r\n");
