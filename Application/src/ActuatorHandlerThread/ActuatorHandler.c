@@ -22,7 +22,7 @@ void vActuatorHandlerTask(void *pvParameters)
                }
                if((cur_accident & 0x4) != 0x0){
                     SerialConsoleWriteString("C\r\n");
-                    update_pwm_duty_cycle(110, 1);
+                    //update_pwm_duty_cycle(110, 1);
                }
                if((cur_accident & 0x8) != 0x0){
                     SerialConsoleWriteString("O\r\n");

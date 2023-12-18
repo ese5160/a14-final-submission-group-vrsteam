@@ -12,8 +12,8 @@ uint8 prev_accident = 0x0;
 
 uint8 detectAccident(int temp, int hum, int acc, int gyro){
     uint8 accident_type = 0x0;
-    if(temp > 41) accident_type |= 0x1;
-    if(hum > 50) accident_type |= 0x2;
+    if(temp > 39) accident_type |= 0x1;
+    if(hum > 90) accident_type |= 0x2;
     if(acc > 130) accident_type |= 0x4;
     if(gyro == 1) accident_type |= 0x8;
     return accident_type;
@@ -67,7 +67,7 @@ void vAccidentHandlerTask(void *pvParameters)
         global_acc_value = (int)round(sqrt((double)((int)linearAccelerationx * (int)linearAccelerationx + linearAccelerationy * linearAccelerationy + linearAccelerationz * linearAccelerationz)));
 
 
-        if(abs(global_gyro[2]) >= 400 && global_gyro[2] < 0) global_gyro_value = 1;
+        if(abs(global_gyro[2]) >= 300 && global_gyro[2] < 0) global_gyro_value = 1;
         else global_gyro_value = 0;
 
         cur_accident = detectAccident(global_temp, global_hum, global_acc_value, global_gyro_value);
