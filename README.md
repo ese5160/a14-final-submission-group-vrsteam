@@ -8,17 +8,17 @@ Runlong Hu, Yijie Ding
 
 ## Pictures
 <p align="center">
-<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/imgs/board3D.png" width="18%"></img> 
-<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/imgs/PCBAtop.jpg" width="18%"></img> 
-<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/imgs/PCBAbottom.jpg" width="20%"></img> 
-<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/imgs/thermal.jpeg" width="20%"></img> 
+<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/blob/main/imgs/board3D.png" width="18%"></img> 
+<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/blob/main/imgs/PCBAtop.jpg" width="18%"></img> 
+<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/blob/main/imgs/PCBAbottom.jpg" width="20%"></img> 
+<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/blob/main/imgs/thermal.jpeg" width="20%"></img> 
 
 <p align="center">
-<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/imgs/board2D.png" width="18%"></img> 
-<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/imgs/board3D.png" width="18%"></img> 
-<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/imgs/nodereddashboard.png" width="20%"></img> 
-<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/imgs/noderedbackend.png" width="20%"></img> 
-<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/imgs/blockdiagram.png" width="20%"></img> 
+<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/blob/main/imgs/board2D.png" width="18%"></img> 
+<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/blob/main/imgs/board3D.png" width="18%"></img> 
+<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/blob/main/imgs/nodereddashboard.png" width="20%"></img> 
+<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/blob/main/imgs/noderedbackend.png" width="20%"></img> 
+<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/blob/main/imgs/blockdiagram.png" width="20%"></img> 
 </p>
 
 ## Device Description
