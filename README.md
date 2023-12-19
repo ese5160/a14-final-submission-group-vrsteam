@@ -4,7 +4,7 @@
 Runlong Hu, Yijie Ding
 
 ## Video
-![https://youtu.be/u2ysAwXiIXU]
+https://youtu.be/u2ysAwXiIXU
 
 ## Pictures
 <p align="center">
