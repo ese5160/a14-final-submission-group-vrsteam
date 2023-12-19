@@ -8,7 +8,7 @@ Runlong Hu, Yijie Ding
 
 ## Pictures
 <p align="center">
-<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/blob/main/imgs/board3D.png" width="18%"></img> 
+<img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/blob/main/imgs/project.jpg" width="18%"></img> 
 <img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/blob/main/imgs/PCBAtop.jpg" width="20%"></img> 
 <img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/blob/main/imgs/PCBAbottom.jpg" width="20%"></img> 
 <img src="https://github.com/ese5160/a14-final-submission-group-vrsteam/blob/main/imgs/thermal.jpeg" width="20%"></img> 
